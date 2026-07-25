@@ -9,6 +9,7 @@ const site = {
   addressLine2: 'Bayside, NY 11361',
   papazzioUrl: 'https://www.papazzio.com',
   facebookUrl: 'https://www.facebook.com/papazziorestaurant/',
+  twitterUrl: 'https://www.twitter.com/papazzio',
   instagramUrl: 'https://www.instagram.com/papazzio_restaurant/',
 }
 
@@ -18,12 +19,16 @@ const images = {
   planning: 'https://i0.wp.com/papazziocatering.com/wp-content/uploads/2016/10/left-menu-parallax1.jpg?fit=1920%2C1000&ssl=1',
   wedding: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/weddingcouple_dark.jpg?fit=1204%2C803&ssl=1',
   knot: 'https://i0.wp.com/www.xoedge.com/myaccount/2019/website-share/VendorBadge_AsSeenInMag.png?w=190&ssl=1',
+  restaurant: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2019/02/IMG_9810-e1551209107565.jpg?fit=1005%2C398&ssl=1',
+  trays: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/09/trays3.jpg?fit=1600%2C1032&ssl=1',
 }
 
 const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Weddings', href: '#weddings' },
   { label: 'Venues', href: '#venues' },
+  { label: 'Packages', href: '#packages' },
+  { label: 'Restaurant', href: '#restaurant' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -41,37 +46,43 @@ const venues = [
     place: 'Bayside, NY',
     title: 'Papazzio - The Restaurant',
     image: 'https://i0.wp.com/papazziocatering.com/wp-content/uploads/2018/08/IMG_1813-e1544060580505.jpg?fit=600%2C450&ssl=1',
-    text: 'A warm Bell Boulevard venue for showers, birthdays, graduations, christenings, and communions. The restaurant accommodates 30-70 guests with exclusive use available by arrangement.',
+    text: 'A warm Bell Boulevard venue for showers, birthdays, graduations, christenings, and communions. The restaurant accommodates 30-70 guests and is available Saturday and Sunday afternoons, plus other times by prior arrangement. With a guaranteed minimum of 30 people, guests have exclusive use of the restaurant during the event.',
+    details: ['30-70 guests', 'Saturday and Sunday afternoons', 'Exclusive use with 30-person minimum'],
   },
   {
     place: 'Bayside, NY',
     title: 'The Castle at Fort Totten',
     image: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/BHS-castle-e1544060445128.jpg?fit=600%2C450&ssl=1',
-    text: 'A waterfront Fort Totten setting with intimate rooms, a sunlit library, gallery spaces, and a grand ballroom for weddings, showers, engagements, and social events.',
+    text: 'Nestled in waterfront Fort Totten Park, this 1887 landmark-designated Gothic Revival former Officers Club works for story-book weddings, engagement parties, bridal and baby showers, reunions, and other special events. Spaces include a tea room with gallery, a sunlit library with cathedral ceilings, and a grand ballroom with views.',
+    details: ['Banquets up to 150 guests', 'Bayside Historical Society: 718-352-1548', 'siterental@baysidehistorical.org'],
   },
   {
     place: 'Little Neck, NY',
     title: 'Queens County Farm',
     image: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/QCF-Barn.jpg?fit=600%2C450&ssl=1',
-    text: 'A distinctive farm museum backdrop for corporate parties, weddings, graduations, communions, and celebrations in The Barn, The Pavilion, or The Orchard.',
+    text: 'A farm museum backdrop for corporate parties, weddings, graduations, bar mitzvahs, bat mitzvahs, communions, and special events, from an elegant gala to a barbecue hoedown.',
+    details: ['The Barn Complex accommodates 120 people with area for dancing', 'The Pavilion accommodates up to 85 people and is available May thru mid-September near growing fields', 'The Orchard can accommodate up to 400 people', 'The North Lawn can accommodate up to 200 people', 'Queens Farm: info@queensfarm.org or 718-347-3276 ext. 301'],
   },
   {
     place: 'Brooklyn',
     title: '26 Bridge',
     image: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/IMG_0019-e1534102811474.jpg?fit=600%2C450&ssl=1',
-    text: 'A renovated former metal factory with original brick walls, towering wooden doors, high ceilings, and room for private events, weddings, mitzvahs, and corporate gatherings.',
+    text: 'A renovated former metal factory with original brick walls, towering wooden doors, high ceilings, and a skylight. It works for private events, weddings, bar mitzvahs, fashion shows, corporate events, and more.',
+    details: ['Seats around 250 guests', 'Standing events up to 375 guests', 'Rental info: 26bridge.com'],
   },
   {
     place: 'Flushing, NY',
     title: 'Flushing Town Hall',
     image: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/flushingtownhall_2-e1544060361475.jpg?w=712&ssl=1',
-    text: 'A cultural venue offering the Theater, Gallery, and Garden as individual or combined event spaces.',
+    text: 'A protected historic building with beautiful exterior and interior character. The Theater, Gallery, and Garden can be rented individually or together.',
+    details: ['Theater accommodates up to 150 with dance floor', 'Gallery works for intimate dinners, ceremonies, or cocktail receptions', 'Garden: 2,000 square feet of grass and trees', 'Kevin Meegan: 718-463-7700 ext. 235 or kmeegan@flushingtownhall.org'],
   },
   {
     place: 'New Canaan, CT',
     title: 'Waveny House',
     image: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/Waveny-Entrance2-e1533912468300.jpg?fit=600%2C450&ssl=1',
-    text: 'A historic estate with grounds, patio, wood-paneled interiors, leaded glass windows, marble fireplaces, murals, and wide plank floors.',
+    text: 'Waveny House overlooks 300 acres of Connecticut countryside with landscaped gardens and grounds. Rentals for weddings, receptions, meetings, social events, and cultural activities can include the first floor, kitchen, west porch, terrace, immediate grass grounds, and two upstairs bridal-party rooms.',
+    details: ['Friday, Saturday, and Sunday rentals', 'Wood-paneled interiors, leaded glass, marble fireplaces, murals, and wide plank floors', 'Call Papazzio at 718-229-1962 for Waveny catering'],
   },
   {
     place: 'Long Island City, NY',
@@ -84,13 +95,155 @@ const venues = [
     title: 'Your Location',
     image: 'https://i0.wp.com/papazziocatering.com/wp-content/uploads/2019/02/qcf-tent.jpg?w=1000&ssl=1',
     text: 'Home, backyard, country club, or another venue that allows outside caterers. Papazzio brings the service, planning, and food to you.',
+    details: ['Backyard weddings', 'Businesses and private homes', 'Any venue that allows outside caterers'],
   },
 ]
 
 const gallery = [
+  { alt: 'View of Throgs Neck Bridge from Fort Totten', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/09/BHS_view-e1544059783526.jpg?fit=600%2C388&ssl=1' },
+  { alt: 'Papazzio Restaurant', src: 'https://i0.wp.com/papazziocatering.com/wp-content/uploads/2018/08/IMG_1813-e1544060580505.jpg?fit=600%2C450&ssl=1' },
+  { alt: 'The Orchard, Queens County Farm', src: 'https://i0.wp.com/papazziocatering.com/wp-content/uploads/2018/08/in-orchard-e1534100374247.jpg?fit=600%2C450&ssl=1' },
+  { alt: 'Waveny House', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/Waveny-Entrance2-e1533912468300.jpg?fit=600%2C450&ssl=1' },
+  { alt: 'The Barn, Queens County Farm', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/QCF-Barn.jpg?fit=600%2C450&ssl=1' },
+  { alt: 'The Theater, Flushing Town Hall', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/flushingtownhall_2-e1544060361475.jpg?fit=600%2C450&ssl=1' },
+  { alt: '26 Bridge event venue', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/bridge26_2-1-e1544060401197.jpg?fit=600%2C450&ssl=1' },
+  { alt: 'The Castle at Fort Totten', src: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/BHS-castle-e1544060445128.jpg?fit=600%2C450&ssl=1' },
+  { alt: 'Cheese platter', src: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/IMG_0069.jpg?fit=600%2C450&ssl=1' },
+  { alt: 'Buffet at The Castle', src: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/IMG_0021.jpg?fit=600%2C450&ssl=1' },
+  { alt: 'The Barn at Queens County Farm', src: 'https://i0.wp.com/papazziocatering.com/wp-content/uploads/2018/08/20171021_180522_001.jpg?fit=600%2C338&ssl=1' },
+  { alt: 'Pretty in pink cocktail hour', src: 'https://i0.wp.com/papazziocatering.com/wp-content/uploads/2018/08/20170923_182614.jpg?fit=600%2C338&ssl=1' },
+  { alt: 'Martini sticks', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/20170722_173029.jpg?fit=600%2C338&ssl=1' },
+  { alt: 'Table setting', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/20170722_172810.jpg?fit=600%2C338&ssl=1' },
+  { alt: 'Cheese puffs', src: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/20170623_173755.jpg?fit=600%2C338&ssl=1' },
+  { alt: 'Fruit platter', src: 'https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/20170616_151459.jpg?fit=600%2C338&ssl=1' },
+  { alt: 'Cheers', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/20170520_174511.jpg?fit=600%2C338&ssl=1' },
+  { alt: 'Goat cheese and cranberry crostini', src: 'https://i0.wp.com/papazziocatering.com/wp-content/uploads/2018/08/20170608_082521.jpg?fit=600%2C338&ssl=1' },
   { alt: 'Papazzio catering place setting', src: images.planning },
   { alt: 'Wedding couple at a Papazzio catered event', src: images.wedding },
-  { alt: '26 Bridge event venue', src: images.hero },
+  { alt: 'Bruschetta', src: 'https://i2.wp.com/papazziocatering.com/wp-content/uploads/2018/08/iStock_000068374519_Medium-1024x683.jpg?fit=600%2C400&ssl=1' },
+]
+
+const horsDoeuvres = [
+  'Spanakopita',
+  'Mini Meatballs',
+  'Tomato Bruschetta',
+  'Asparagus in Prosciutto',
+  'Pigs in a Blanket',
+  'Miniature Pizza',
+  'Olive Bruschetta',
+  'Beef Wrapped in Bacon',
+  'Veggie Martini Sticks',
+  'Zucchini Sticks',
+  'Scallops Wrapped in Bacon',
+  'Empañadas',
+  'Mozzarella Sticks',
+  'Swedish Meatballs',
+  'Beef Satay',
+  'Mini Quiches',
+  'Vegetable Egg Rolls',
+  'Italian Martini Sticks',
+  'Chicken Satay',
+]
+
+const cocktailUpgrades = ['Grilled Baby Lamb Chops', 'Shrimp Cocktail', 'Pesto Shrimp']
+const salads = ['House Salad', 'Caesar Salad', 'Tricolor Salad', 'Spinach Salad', 'Sliced Tomato & Mozzarella']
+const buffetPastas = ['Linguine Red Clam Sauce', 'Linguine White Clam Sauce', 'Rigatoni alla Messinase', 'Tortellini Alfredo', 'Baked Ziti', 'Jumbo Stuffed Shells', 'Ravioli Marinara', 'Farfalle Primavera Garlic & Oil', 'Penne Filletto di Pomodoro', 'Penne alla Vodka', 'Farfalale Marinara', 'Fettuccine Alfredo']
+const buffetEntrees = ['Sausage & Peppers', 'Roast Pork in Black Bean Sauce', 'Eggplant Rollatini', 'Eggplant Parmigiana', 'Beef and Broccoli', 'Beef Teriyaki', 'Beef Burgundy with Mushrooms', 'Hawaiian Chicken', 'Chicken Piccata', 'Chicken Sesame', 'Chicken Marsala', 'Chicken Parmigiana', 'Chicken Bianco', 'Stuffed Chicken Rollatini', 'Chicken Francaise', 'Chicken Scarpariello', 'Veal Parmigiana', 'Veal Saltimbocca', 'Veal Marsala', 'Veal and Peppers', 'Veal Francaise', 'Veal Piccata', 'Salmon or Tilapia Lemon Basil', 'Crab Meat Stuffed Tilapia', 'Salmon/Tilapia Champagne Dill', 'Salmon Oreganata', 'Horseradish-crusted Salmon', 'Shrimp / Scallops Scampi', 'Sole with Seafood Stuffing', 'Sauteed Vegetables', 'Assorted Grilled Vegetables', 'Roasted Red-Bliss Potatoes', 'Sautéed Spinach', 'Green Beans Almondine', 'Risotto', 'Seasoned Rice', 'Seasoned Rice with Peas and Carrots', 'Garlic Mashed Potatoes']
+const entreeUpgrades = ['Sliced Filet Mignon Skirt Steak (Peppers & Onions)', 'Shrimp or Scallops Scampi', 'Sliced Prime Rib']
+
+const packages = [
+  {
+    title: 'Basic Buffet / Tray Menu',
+    intro: [
+      'Delivery and Set-up Fee of $100 includes delivery of trays, buffet set-up, wire chaffing racks, sternos, and plastic serving utensils. Refundable deposit for wire racks applies.',
+      'For an additional $5 per person, Papazzio supplies plastic plates, plastic utensils, napkins, soda, and plastic cups.',
+      'Small trays serve approximately 8-10 servings and large trays serve approximately 16-20 servings. GF next to any menu item indicates that dish is available as gluten free, but guests must notify Papazzio when ordering. Gluten Free Pasta (penne or spaghetti) is $10 extra for half tray and $20 extra for full tray.',
+    ],
+    groups: [
+      {
+        heading: 'Appetizers',
+        items: ['Grilled Portobello Mushrooms GF - With goat cheese and chopped tomatoes on romaine SM $45 LG $85', 'Sliced Tomato and Mozzarella GF - Served with pesto sauce SM $45 LG $85', 'Cold Antipasto GF - Marinated artichokes, roasted peppers, assorted olives, cured meats & assorted cheeses SM $85 LG $165', 'Fried Calamari GF - With marinara sauce SM $60 LG $115', 'Gulf Shrimp Wrapped GF in Prosciutto and topped with warm pesto SM $65 LG $125', 'Baked Clams - With herbed breadcrumbs and light butter sauce SM $60 LG $115', 'Stuffed Mushrooms GF Vegetable or sausage with light Marsala Sauce SM $55 LG $105', 'Rice Balls - With marinara sauce SM $50 LG $95', 'Potato Croquettes GF SM $50 LG $95'],
+      },
+      {
+        heading: 'Salads',
+        items: ['Tricolor Salad GF - Arugula, radicchio and endive with balsamic vinaigrette SM $45 LG $85', 'Warm Goat Cheese and Roasted Beet Salad GF - Mesclun greens with candied pecans & raspberry vinaigrette SM $55 LG $105', 'Classic-style Caesar GF - Shaved pecorino Romano and croutons; no croutons on gluten free SM $45 LG $85', 'House Salad GF - Romaine, tomatoes, roasted red peppers, onions & croutons with balsamic vinaigrette SM $40 LG $75'],
+      },
+      {
+        heading: 'Wraps & Paninis',
+        items: ['Five wraps in a half tray or ten wraps in a full tray. Choice of Salmon Dill Wrap, Broadway Steak Wrap, Chicken Caesar, Chicken Goat Cheese Pecan, or Grilled Vegetable Wrap SM $55 LG $110'],
+      },
+      {
+        heading: 'Pastas',
+        items: ['Baked Ziti GF SM $55 LG $105', 'Stuffed Shells SM $55 LG $105', 'Penne alla Vodka GF SM $55 LG $105', 'Fettuccine Alfredo GF SM $55 LG $105', 'Farfalle Primavera GF - Bow-tie pasta with broccoli, zucchini, yellow squash & carrots in garlic & oil sauce SM $55 LG $105', 'Cappellini alla Rosa con Pollo GF - Angel hair with chicken and assorted vegetables in a rosé sauce SM $60 LG $115', 'Rigatoni Gorgonzola con Gamberi GF - Pan-seared shrimp, spinach & tomatoes in a Gorgonzola cream sauce SM $65 LG $125', 'Linguine with Broccoli Rabe & Sausage GF - In a light garlic and oil sauce SM $65 LG $125', 'Tortellini alla Panna - Ham, peas & mushrooms in a cream sauce SM $60 LG $115', 'Fettuccine con Gamberi e Pollo Florentine GF - Shrimp, chicken, spinach and mushrooms in a creamy garlic sauce SM $80 LG $155', 'Linguine del Pescatore Fra Diavlo GF - Shrimp, scallops, clams and mussels in spicy marinara sauce SM $90 LG $175', 'Cheese Ravioli Marinara or Bolognese SM $55 LG $105', 'Farfalle Aglio Olio GF - With spinach and mushrooms sautéed in garlic and virgin olive oil SM $60 LG $115', 'Gnocchi Bolognese - Potato pasta with fresh meat sauce SM $60 LG $115', 'Linguine con Vongole GF - With red or white clam sauce SM $65 LG $125', 'Penne Classico GF - Seasoned sweet sausage and tomatoes in a fresh pink sauce SM $65 LG $125'],
+      },
+      {
+        heading: 'Entrees',
+        items: ['Sausage & Peppers GF SM $50 LG $95', 'Eggplant Parmigiana GF SM $50 LG $95', 'Eggplant Rollatini GF - Stuffed with mozzarella and ricotta, topped with marinara SM $55 LG $100', 'Meatballs in Marinara Sauce GF SM $55 LG $100', 'Chicken Parmigiana GF - Chicken cutlets topped with mozzarella and marinara SM $55 LG $100', 'Chicken Bianco GF - Chicken medallions, artichoke hearts, mushrooms and tomatoes in white wine sauce SM $55 LG $100', 'Chicken alla Papazzio GF - Layers of chicken, eggplant, mushrooms, tomatoes & mozzarella over spinach SM $60 LG $110', 'Chicken Francaise GF - Egg-battered chicken sautéed in lemon and white wine SM $55 LG $100', 'Chicken Piccata GF - Chicken medallions with capers in lemon white wine sauce SM $55 LG $100', 'Stuffed Chicken Rollatini GF - Stuffed with basil, mozzarella, roasted peppers and prosciutto in filetto di pomodoro sauce SM $55 LG $100', 'Chicken Marsala GF - Chicken medallions with mushrooms in Marsala wine sauce SM $55 LG $100', 'Chicken Scarpariella GF - Chicken medallions with sausage, peppers, onions and potatoes in brown sauce SM $60 LG $110', 'Veal Parmigiana GF - Veal cutlets topped with mozzarella in marinara SM $75 LG $140', 'Veal Saltimbocca GF - Veal scaloppine layered with eggplant, prosciutto and mozzarella on spinach SM $75 LG $140', 'Veal Marsala GF - Veal medallions with mushrooms in Marsala wine sauce SM $75 LG $140', 'Veal Piccata GF - Veal medallions with capers in lemon white wine sauce SM $75 LG $140', 'Marinated Skirt Steak GF - With peppers and onion in barbecue sauce SM $85 LG $175', 'Shrimp & Scallops Provencal GF - Tomatoes, onion and eggplant with Provencal herb sauce and cappellini SM $90 LG $170', 'Shrimp Scampi GF - Shrimp with garlic and herb sauce over risotto SM $80 LG $155', 'Salmon Lemon Basil GF - Broiled and topped with lemon basil sauce SM $90 LG $175', 'Horseradish Crusted Salmon - Broiled and topped with horseradish bread crumb topping SM $90 LG $175', 'Champagne Dill Salmon GF - Broiled and topped with Champagne Dill sauce SM $90 LG $175', 'Chicken Fingers SM $50 LG $95'],
+      },
+      {
+        heading: 'Sides',
+        items: ['French Fries SM $30 LG $60', 'Broccoli Rabe and Sausage GF - Sautéed in olive oil & garlic SM $55 LG $100', 'Portobello Risotto GF SM $45 LG $85', 'Spinach GF - Sautéed in butter and topped with Pecorino Romano SM $45 LG $85', 'Garlic Mashed Potatoes GF SM $45 LG $85', 'Sautéed Assorted Vegetables GF in garlic & oil SM $45 LG $85'],
+      },
+    ],
+  },
+  {
+    title: 'Classic Buffet',
+    intro: ['A four-hour, buffet-style event including delivery and setup of selected menu items, linens for buffet tables, serving staff, coffee, tea and soda, bakery-fresh rolls, condiments, a layered sheet cake of your design, and clean-up.'],
+    groups: [
+      { heading: 'Choice of One Salad', items: salads },
+      { heading: 'Choice of Two Pastas', items: buffetPastas },
+      { heading: 'Choose Three Entrees / Sides', items: buffetEntrees },
+    ],
+  },
+  {
+    title: 'Gold Buffet',
+    intro: ['Typically a five-hour party including one hour of passed hors d’oeuvres and a buffet dinner, beer and wine bar, buffet linens, butler-style appetizer service, event staff, coffee, tea and soda, bakery-fresh rolls, condiments, table linens, glassware, plates and silverware, a sheet cake of your design, and clean-up. Package subject to NY tax & 20% gratuity.'],
+    groups: [
+      { heading: 'Choose Five Passed Hors d’oeuvres', items: horsDoeuvres },
+      { heading: 'Cocktail Hour Upgrade - Choose Two', items: cocktailUpgrades },
+      { heading: 'Choose One Salad', items: salads.slice(0, 4) },
+      { heading: 'Choose One Pasta', items: buffetPastas },
+      { heading: 'Choose Three Entrees / Sides', items: buffetEntrees },
+      { heading: 'Entree Course Upgrades', items: entreeUpgrades },
+      { heading: 'Dessert', items: ['Occasion Cake of Your Design', 'Coffee', 'Tea'] },
+    ],
+  },
+  {
+    title: 'Premiere Buffet',
+    intro: ['A five-hour event including one hour of passed hors d’oeuvres, buffet dinner, buffet linens, butler-style cocktail-hour service, event staff, five-hour full standard bar, coffee, tea, soda, rolls, condiments, table linens, glassware, plates and silverware, a layered sheet cake of your design, and clean-up. Package subject to 8.875% tax & 20% gratuity.'],
+    groups: [
+      { heading: 'Passed Hors d’oeuvre Choices - Choose Seven', items: horsDoeuvres },
+      { heading: 'Cocktail Hour Upgrade - Choose Two', items: cocktailUpgrades },
+      { heading: 'Salad Choices - Choose One', items: salads.slice(0, 4) },
+      { heading: 'Pasta Choices - Choose Two', items: buffetPastas },
+      { heading: 'Entree Choices - Choose Four, One Seafood Only', items: buffetEntrees },
+      { heading: 'Entree Course Upgrades', items: entreeUpgrades },
+      { heading: 'Dessert', items: ['Occasion Cake of Your Design', 'Coffee and Tea'] },
+    ],
+  },
+  {
+    title: 'Premiere Sit Down',
+    intro: ['A five-hour event including one hour of passed hors d’oeuvres and a sit-down dinner, butler-style cocktail-hour service, event staff, five-hour standard bar, coffee, tea and soda, bakery-fresh rolls, condiments, table linens, glassware, plates and silverware, a layered sheet cake of your design, and clean-up. Package subject to 8.875% tax and 20% gratuity.'],
+    groups: [
+      { heading: 'Choose Seven Passed Hors d’oeuvres', items: horsDoeuvres },
+      { heading: 'Cocktail Hour Upgrade - Choose Two', items: cocktailUpgrades },
+      { heading: 'Appetizer Course', items: ['Caesar Salad', 'Tricolor Salad', 'Spinach Salad', 'House Salad', 'Chopped Tomato and Mozzarella Salad', 'Sliced Tomato and Mozzarella'] },
+      { heading: 'Pasta Course', items: ['Fettuccine Alfredo', 'Penne Filetto di Pomodoro', 'Penne alla Vodka', 'Farfalle Marinara', 'Farfalle Garlic & Oil', 'Tortellini Alfredo'] },
+      { heading: 'Intermezzo', items: ['Lemon Sorbet', 'Raspberry Sorbet'] },
+      { heading: 'Choose Three Entrees - One Seafood', items: ['Eggplant Rollatini', 'Eggplant Parmigiana', 'Beef Burgundy with Mushrooms', 'Chicken Piccata', 'Chicken Marsala', 'Chicken Parmigiana', 'Chicken Bianco', 'Stuffed Chicken Rollatini', 'Chicken Francaise', 'Chicken Scarpariello', 'Veal Parmigiana', 'Veal Saltimbocca', 'Veal Marsala', 'Veal and Peppers', 'Veal Francaise', 'Veal Piccata', 'Salmon or Tilapia Lemon Basil', 'Crab Meat Stuffed Tilapia', 'Salmon/Tilapia Champagne Dill', 'Salmon Oreganata', 'Horseradish-crusted Salmon', 'Shrimp / Scallops Scampi', 'Sole with Seafood Stuffing'] },
+      { heading: 'Entree Course Upgrades', items: entreeUpgrades },
+      { heading: 'Dessert', items: ['Occasion Sheet Cake of Your Design', 'Coffee, Tea'] },
+    ],
+  },
+]
+
+const additionalOptions = [
+  { heading: 'Cold Stations', items: ['Assorted Fruit Platter', 'Assorted Cheese Platter', 'Sliced Tomato and Mozzarella', 'Assorted Cold Antipasto', 'Grilled Vegetables'] },
+  { heading: 'Hot Stations', items: ['Pasta Station', 'Choice of Pasta: Penne, Rigatoni, Farfalle or Tortellini', 'Choice of Sauce: Alfredo, Filetto di Pomodoro, Marinara, Garlic and Oil, or Vodka Sauce'] },
+  { heading: 'Carving Station', items: ['Baked Ham', 'Roasted Turkey', 'Marinated Barbecued Skirt Steak', 'Filet Mignon'] },
+  { heading: 'Desserts', items: ['Mini Pastries and Cookies', 'Ice Cream Sundae Set Up', 'Sliced Fruit Platter', 'Wedding Cakes'] },
+  { heading: 'Bar Options', items: ['Wine & Beer', 'Champagne Punch', 'Standard Shelf Liquor, Beer and Wine', 'Premium Liquor, Beer and Wine'] },
+  { heading: 'Additional Options', items: ['Valet', 'Chair Covers', 'Tent Rentals'] },
 ]
 
 function App() {
@@ -166,15 +319,30 @@ function App() {
             <h2>Event planning with the warmth of Papazzio.</h2>
             <p>
               Papazzio is an experienced wedding and event caterer located in
-              Bayside, NY. The team has been in the restaurant and catering
+              Bayside, NY. Papazzio Catering has been in the restaurant and catering
               business since 1990, pairing customized menus with attentive,
               one-on-one planning.
             </p>
             <p>
-              Clients can build an event around tasting, equipment rentals,
-              venue coordination, and the kind of polished service that keeps
-              the day moving without stress.
+              From weddings, showers and sweet sixteens to birthdays and
+              graduations, Papazzio provides event planning services to
+              personalize catered on-site or off-site affairs and realize each
+              client&apos;s unique vision. Services include event planning,
+              tastings, equipment rentals, venue coordination, and flexible
+              planning for a range of budgets.
             </p>
+            <p>
+              Papazzio also welcomes gluten-free customers and practices strict
+              procedures to prevent cross contamination for gluten-free guests.
+            </p>
+            <div className="legacy-service-list">
+              <strong>Catering Off-site</strong>
+              <span>Papazzio has over 25 years experience in catering weddings and other special events.</span>
+              <strong>Catering at Papazzio</strong>
+              <span>Papazzio is the perfect location for showers, christenings, communions and birthdays.</span>
+              <strong>Trays</strong>
+              <span>For easy entertaining at home or office, Papazzio offers a complete tray menu and will help figure out how much to order.</span>
+            </div>
             <a className="button button-dark" href="#contact">
               Start Planning
             </a>
@@ -193,9 +361,12 @@ function App() {
             <p className="eyebrow gold">Dedicated in everything we do</p>
             <h2>Weddings, celebrations, and catered affairs built around your vision.</h2>
             <p>
-              Papazzio works with a range of budgets while focusing on the
-              details guests remember: the food, the pacing, the presentation,
-              and the sense that the whole event is being cared for.
+              Striving for excellence, the catering team excels in hospitality
+              for weddings, sweet sixteens, corporate events, bar and bat
+              mitzvahs, fundraisers, private affairs, and more. Papazzio is
+              committed to professional, personalized, reliable service and a
+              delicious menu using only the finest ingredients, with many
+              gluten-free options available.
             </p>
           </div>
         </section>
@@ -221,9 +392,84 @@ function App() {
                     {venue.title}
                   </h3>
                   <p>{venue.text}</p>
+                  {venue.details && (
+                    <ul>
+                      {venue.details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="packages-section" id="packages">
+          <div className="section-intro">
+            <p className="eyebrow gold">Packages and tray menus</p>
+            <h2>Every off-site package and menu item from the old site.</h2>
+            <p>
+              These are the legacy Papazzio Catering package details, tray
+              prices, gluten-free notes, service inclusions, upgrades, stations,
+              bar options, and dessert choices.
+            </p>
+          </div>
+          <div className="package-list">
+            {packages.map((item) => (
+              <PackageCard packageItem={item} key={item.title} />
+            ))}
+          </div>
+        </section>
+
+        <section className="options-section">
+          <div className="section-intro">
+            <p className="eyebrow tomato">Additional options</p>
+            <h2>Stations, desserts, bar service, and event add-ons.</h2>
+          </div>
+          <div className="option-grid">
+            {additionalOptions.map((group) => (
+              <MenuGroup group={group} key={group.heading} />
+            ))}
+          </div>
+        </section>
+
+        <section className="restaurant-section" id="restaurant">
+          <img src={images.restaurant} alt="Papazzio restaurant dining room" />
+          <div>
+            <p className="eyebrow gold">Restaurants and on-site catering</p>
+            <h2>Papazzio Restaurant & Caterer.</h2>
+            <p>
+              Established in 1990, Papazzio has served Bayside for nearly 30
+              years with Italian favorites and Papazzio originals. For more than
+              25 years, Papazzio has been Bell Boulevard&apos;s mainstay
+              destination, providing a taste of elegance in a comfortable,
+              old-world Tuscany setting with a fusion of Northern and Southern
+              Italian cuisine.
+            </p>
+            <p>
+              The main dining room is available for private parties on Saturday
+              and Sunday afternoons with a minimum of 30 people. Restaurant
+              party packages differ from off-site packages. A small private
+              dining area downstairs in the Wine Room is also available with the
+              Wine Room package or a la carte dinner-menu ordering with a room
+              fee.
+            </p>
+            <p>
+              Restaurant package headings from the legacy page: Premiere Package
+              #1, Premier Package #2, Buffet Menu, Additional Options, and Cake
+              Options.
+            </p>
+            <p>
+              Previti Pizza and Papazzio Dining, located in New Hyde Park, was
+              listed as Papazzio&apos;s newer venture, featuring artisan pizza
+              and some Papazzio classics.
+            </p>
+            <p>
+              Gluten free? Over 90% of Papazzio menus are available
+              gluten-free, and Papazzio practices strict procedures to prevent
+              cross contamination.
+            </p>
           </div>
         </section>
 
@@ -242,7 +488,10 @@ function App() {
           </div>
           <div className="gallery-grid">
             {gallery.map((image) => (
-              <img src={image.src} alt={image.alt} key={image.alt} />
+              <figure key={image.alt}>
+                <img src={image.src} alt={image.alt} />
+                <figcaption>{image.alt}</figcaption>
+              </figure>
             ))}
           </div>
         </section>
@@ -265,6 +514,10 @@ function App() {
             </p>
             <a href={site.phoneHref}>{site.phone}</a>
             <a href={site.emailHref}>{site.email}</a>
+            <p className="small-note">
+              For off-premise catering services, the legacy site asks guests to
+              call Dominick at 718-229-1962.
+            </p>
             <div className="button-row compact">
               <a className="button button-dark" href={site.emailHref}>
                 Email Us
@@ -298,8 +551,10 @@ function App() {
           <a href={site.emailHref}>{site.email}</a>
           <a href={site.phoneHref}>{site.phone}</a>
           <a href={site.facebookUrl}>Facebook</a>
+          <a href={site.twitterUrl}>Twitter</a>
           <a href={site.instagramUrl}>Instagram</a>
         </div>
+        <p className="trademark">©2019 Papazzio is a registered trademark.</p>
       </footer>
     </div>
   )
@@ -313,6 +568,43 @@ function InfoCard({ lines, title }: { lines: string[]; title: string }) {
         <strong key={line}>{line}</strong>
       ))}
     </article>
+  )
+}
+
+function PackageCard({
+  packageItem,
+}: {
+  packageItem: {
+    title: string
+    intro: string[]
+    groups: { heading: string; items: string[] }[]
+  }
+}) {
+  return (
+    <article className="package-card">
+      <h3>{packageItem.title}</h3>
+      {packageItem.intro.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      <div className="package-groups">
+        {packageItem.groups.map((group) => (
+          <MenuGroup group={group} key={group.heading} />
+        ))}
+      </div>
+    </article>
+  )
+}
+
+function MenuGroup({ group }: { group: { heading: string; items: string[] } }) {
+  return (
+    <div className="menu-group">
+      <h4>{group.heading}</h4>
+      <ul>
+        {group.items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
