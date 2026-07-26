@@ -375,7 +375,8 @@
 
 .button-gold {
   background: var(--gold);
-  color: var(--ink);
+  color: #120f0c;
+  text-shadow: 0 1px 0 rgb(255 248 232 / 0.3);
 }
 
 .button-gold:hover {
@@ -1473,10 +1474,12 @@
   border: 1px solid var(--gold);
   border-radius: 999px;
   background: var(--gold);
-  color: var(--ink);
-  font-size: 0.75rem;
+  color: #120f0c;
+  font-size: 0.8rem;
   font-weight: 950;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-shadow: 0 1px 0 rgb(255 248 232 / 0.32);
   text-transform: uppercase;
   transition: background 180ms, border-color 180ms, transform 180ms;
 }
@@ -1484,6 +1487,7 @@
 .footer-cta:hover {
   border-color: #d7aa42;
   background: #d7aa42;
+  color: #080706;
   transform: translateY(-1px);
 }
 
