@@ -649,7 +649,7 @@ function RestaurantMenuSection() {
           included here and organized for browsing.
         </p>
       </div>
-      <div className="current-menu-list">
+      <div className="current-menu-list" aria-label="Papazzio restaurant menus">
         {menuPages.map((page) => (
           <article className="current-menu-panel" key={page.slug}>
             <button
@@ -658,11 +658,12 @@ function RestaurantMenuSection() {
               onClick={() => setOpenMenuSlug(openMenuSlug === page.slug ? null : page.slug)}
               type="button"
             >
+              <img src={page.image} alt="" loading="lazy" />
               <span>
                 <small>Papazzio menu</small>
                 {page.title}
               </span>
-              <img src={page.image} alt="" loading="lazy" />
+              <b>{openMenuSlug === page.slug ? 'Close' : 'Open'}</b>
             </button>
             {openMenuSlug === page.slug && (
               <div className="current-menu-body">
