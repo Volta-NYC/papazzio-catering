@@ -596,8 +596,9 @@ function PackagesPage() {
           </p>
         </div>
         <div className="package-list">
-          {packages.map((item) => (
+          {packages.map((item, index) => (
             <PackageCard
+              index={index}
               isOpen={openPackageTitle === item.title}
               onToggle={() => setOpenPackageTitle(openPackageTitle === item.title ? null : item.title)}
               packageItem={item}
@@ -919,10 +920,12 @@ function InfoCard({ lines, title }: { lines: string[]; title: string }) {
 }
 
 function PackageCard({
+  index,
   isOpen,
   onToggle,
   packageItem,
 }: {
+  index: number
   isOpen: boolean
   onToggle: () => void
   packageItem: {
@@ -932,7 +935,7 @@ function PackageCard({
   }
 }) {
   return (
-    <article className="package-card">
+    <article className={`package-card${isOpen ? ' is-open' : ''}${index === packages.length - 1 ? ' is-last' : ''}`}>
       <button aria-expanded={isOpen} className="package-toggle" onClick={onToggle} type="button">
         <span>
           <strong>{packageItem.title}</strong>
