@@ -1244,9 +1244,9 @@
 
 .footer {
   position: relative;
-  padding: 4.5rem clamp(1rem, 5vw, 5rem) 2rem;
+  padding: 3.25rem clamp(1rem, 5vw, 5rem) 1.8rem;
   background:
-    linear-gradient(180deg, rgb(31 27 22 / 0.98), #080706),
+    linear-gradient(180deg, rgb(31 27 22 / 0.98), #0d0a08),
     #080706;
   color: var(--cream);
 }
@@ -1257,8 +1257,8 @@
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(90deg, rgb(240 195 90 / 0.16), transparent 34%),
-    linear-gradient(0deg, transparent, rgb(255 248 232 / 0.05));
+    linear-gradient(90deg, rgb(240 195 90 / 0.08), transparent 28%),
+    linear-gradient(0deg, transparent, rgb(255 248 232 / 0.035));
 }
 
 .footer-main,
@@ -1269,23 +1269,24 @@
 
 .footer-main {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr);
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: start;
+  grid-template-columns: minmax(18rem, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
 }
 
 .footer-brand {
-  max-width: 42rem;
+  max-width: 34rem;
 }
 
 .footer h2 {
-  margin-top: 1rem;
-  font-size: clamp(2.7rem, 5vw, 5rem);
-  line-height: 0.92;
+  max-width: 28rem;
+  margin-top: 0.85rem;
+  font-size: clamp(2.2rem, 3.8vw, 4rem);
+  line-height: 0.96;
 }
 
 .footer p {
-  max-width: 38rem;
+  max-width: 31rem;
   margin-top: 1rem;
   color: rgb(255 248 232 / 0.68);
   line-height: 1.7;
@@ -1295,9 +1296,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
-  margin-top: 1.6rem;
-  padding: 0.95rem 1.3rem;
+  min-height: 2.7rem;
+  margin-top: 1.35rem;
+  padding: 0.8rem 1.15rem;
   border: 1px solid var(--gold);
   border-radius: 999px;
   background: var(--gold);
@@ -1318,14 +1319,16 @@
 .footer-links {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  padding: 1.5rem;
-  border: 1px solid rgb(255 248 232 / 0.13);
-  background: rgb(255 248 232 / 0.04);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: 0;
+  border-top: 1px solid rgb(255 248 232 / 0.1);
+  border-bottom: 1px solid rgb(255 248 232 / 0.1);
+  background: transparent;
 }
 
 .footer h3 {
-  margin: 0 0 1.3rem;
+  margin: 0 0 1rem;
+  padding-top: 1.2rem;
   color: rgb(240 195 90 / 0.92);
   font-size: 0.72rem;
   font-weight: 950;
@@ -1336,8 +1339,10 @@
 .footer a,
 .footer span {
   display: block;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.72rem;
   color: rgb(255 248 232 / 0.7);
+  font-size: 0.95rem;
+  font-weight: 650;
   line-height: 1.45;
   transition: color 180ms;
 }
@@ -1352,7 +1357,7 @@
   gap: 1rem 2rem;
   align-items: center;
   justify-content: space-between;
-  margin-top: 3.5rem;
+  margin-top: 2.6rem;
   border-top: 1px solid rgb(255 248 232 / 0.12);
   padding-top: 1.25rem;
 }
