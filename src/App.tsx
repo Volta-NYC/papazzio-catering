@@ -429,9 +429,11 @@ function AboutPage() {
         text="A Bayside catering team bringing restaurant warmth to weddings, private parties, corporate gatherings, and family milestones."
       />
       <section className="split-section cream">
-        <div>
+        <div className="split-heading">
           <p className="eyebrow tomato">Catering by Papazzio</p>
           <h2>Event planning with the warmth of Papazzio.</h2>
+        </div>
+        <div>
           <p>
             Papazzio is an experienced wedding and event caterer located in
             Bayside, NY. Papazzio Catering has been in the restaurant and

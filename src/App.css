@@ -464,6 +464,11 @@
   padding: 6rem clamp(1rem, 5vw, 5rem);
 }
 
+.split-heading {
+  grid-column: 1 / -1;
+  max-width: 74rem;
+}
+
 .cream {
   background: var(--cream);
 }
@@ -476,6 +481,11 @@
   margin-top: 1rem;
   font-size: clamp(2.65rem, 6vw, 5.6rem);
   line-height: 0.92;
+}
+
+.split-heading h2 {
+  font-size: clamp(4rem, 9vw, 8.4rem);
+  line-height: 0.88;
 }
 
 .split-section p:not(.eyebrow),
