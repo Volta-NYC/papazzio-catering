@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { menuPages } from './menu-pages'
 
@@ -325,9 +325,41 @@ const introLabels = [
   'To substitute',
 ]
 
+const revealSelectors = [
+  '.hero-content > *',
+  '.hero-note',
+  '.ticker-track span',
+  '.info-card',
+  '.proof-section > *',
+  '.split-heading',
+  '.split-section > div:not(.split-heading)',
+  '.wedding-copy > *',
+  '.wedding-notes > div',
+  '.page-hero-content > *',
+  '.section-intro > *',
+  '.venue-card',
+  '.package-card',
+  '.package-card > p',
+  '.package-group-card',
+  '.menu-group',
+  '.restaurant-section > *',
+  '.current-menu-panel',
+  '.current-menu-section',
+  '.current-menu-item',
+  '.gallery-grid figure',
+  '.contact-section > *',
+  '.footer-brand > *',
+  '.footer-links > div',
+  '.footer-bottom > *',
+]
+
+const revealDirections = ['reveal-up', 'reveal-left', 'reveal-right', 'reveal-down']
+
 function App() {
   const currentPath = normalizePath(window.location.pathname)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  useScrollReveal(currentPath)
 
   return (
     <div className="site">
@@ -373,6 +405,56 @@ function App() {
       <SiteFooter />
     </div>
   )
+}
+
+function useScrollReveal(currentPath: string) {
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (reducedMotion) {
+      document.querySelectorAll(revealSelectors.join(',')).forEach((element) => {
+        element.classList.add('is-visible')
+      })
+      return
+    }
+
+    const revealVisibleElements = () => {
+      document.querySelectorAll<HTMLElement>('.scroll-reveal:not(.is-visible)').forEach((element) => {
+        const rect = element.getBoundingClientRect()
+        const revealLine = window.innerHeight * 0.88
+
+        if (rect.top < revealLine && rect.bottom > 0) {
+          element.classList.add('is-visible')
+        }
+      })
+    }
+
+    const registerElements = () => {
+      document.querySelectorAll<HTMLElement>(revealSelectors.join(',')).forEach((element, index) => {
+        if (element.classList.contains('scroll-reveal')) {
+          return
+        }
+
+        element.classList.add('scroll-reveal', revealDirections[index % revealDirections.length])
+        element.style.setProperty('--reveal-delay', `${Math.min((index % 5) * 70, 280)}ms`)
+      })
+
+      window.requestAnimationFrame(revealVisibleElements)
+    }
+
+    registerElements()
+    window.addEventListener('scroll', revealVisibleElements, { passive: true })
+    window.addEventListener('resize', revealVisibleElements)
+
+    const mutationObserver = new MutationObserver(registerElements)
+    mutationObserver.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      window.removeEventListener('scroll', revealVisibleElements)
+      window.removeEventListener('resize', revealVisibleElements)
+      mutationObserver.disconnect()
+    }
+  }, [currentPath])
 }
 
 function renderPage(path: string) {
