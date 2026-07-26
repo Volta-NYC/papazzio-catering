@@ -86,23 +86,24 @@
   transform: translateX(0);
 }
 
-.header-call {
+.header-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 2.55rem;
   padding: 0.75rem 1rem;
-  border: 1px solid rgb(255 248 232 / 0.3);
+  border: 1px solid var(--gold);
   border-radius: 999px;
-  color: var(--cream);
+  background: var(--gold);
+  color: var(--ink);
   font-size: 0.72rem;
-  font-weight: 900;
+  font-weight: 950;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   transition: background 200ms, color 200ms, border-color 200ms;
 }
 
-.header-call:hover {
+.header-cta:hover {
   border-color: var(--cream);
   background: var(--cream);
   color: var(--ink);
@@ -1045,8 +1046,7 @@
 }
 
 @media (max-width: 800px) {
-  .brand span,
-  .header-call {
+  .brand span {
     display: none;
   }
 

@@ -38,15 +38,12 @@ const images = {
 }
 
 const navItems = [
-  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Weddings', href: '/weddings' },
   { label: 'Venues', href: '/venues' },
   { label: 'Packages', href: '/packages' },
   { label: 'Our Menu', href: '/menu' },
   { label: 'Restaurant', href: '/restaurant' },
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'Contact', href: '/contact' },
 ]
 
 const ticker = [
@@ -346,8 +343,8 @@ function App() {
             </a>
           ))}
         </nav>
-        <a className="header-call" href={site.phoneHref}>
-          {site.phone}
+        <a className="header-cta" href="/contact">
+          Contact
         </a>
       </header>
 
@@ -418,6 +415,7 @@ function HomePage() {
         </div>
         <img src={images.knot} alt="As Seen in The Knot Magazine" loading="lazy" />
       </section>
+      <GallerySection />
     </main>
   )
 }
@@ -672,21 +670,27 @@ function RestaurantPage() {
 function GalleryPage() {
   return (
     <main className="page-main">
-      <section className="gallery-section">
-        <div className="section-intro">
-          <p className="eyebrow gold">Gallery</p>
-          <h2>A look at the food, rooms, and celebration moments.</h2>
-        </div>
-        <div className="gallery-grid">
-          {gallery.map((image) => (
-            <figure key={image.alt}>
-              <img src={image.src} alt={image.alt} loading="lazy" />
-              <figcaption>{image.alt}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
+      <GallerySection />
     </main>
+  )
+}
+
+function GallerySection() {
+  return (
+    <section className="gallery-section">
+      <div className="section-intro">
+        <p className="eyebrow gold">Gallery</p>
+        <h2>A look at the food, rooms, and celebration moments.</h2>
+      </div>
+      <div className="gallery-grid">
+        {gallery.map((image) => (
+          <figure key={image.alt}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+            <figcaption>{image.alt}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
   )
 }
 
