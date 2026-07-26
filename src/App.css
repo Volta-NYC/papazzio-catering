@@ -768,10 +768,14 @@
   min-height: 18rem;
 }
 
-.package-card.is-last:not(.is-open) {
+.package-card.is-last {
   grid-column: 1 / -1;
   width: calc(50% - 0.5rem);
   justify-self: center;
+}
+
+.package-card.is-last .package-groups {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .package-card:hover {
@@ -1521,8 +1525,12 @@
     grid-template-columns: 1fr;
   }
 
-  .package-card.is-last:not(.is-open) {
+  .package-card.is-last {
     width: 100%;
+  }
+
+  .package-card.is-last .package-groups {
+    grid-template-columns: 1fr;
   }
 
   .package-toggle small {
