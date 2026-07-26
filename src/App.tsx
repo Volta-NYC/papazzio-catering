@@ -422,6 +422,12 @@ function HomePage() {
 function AboutPage() {
   return (
     <main className="page-main">
+      <PageHero
+        eyebrow="About Papazzio Catering"
+        image={images.planning}
+        title="Planning, hospitality, and food with the Papazzio standard."
+        text="A Bayside catering team bringing restaurant warmth to weddings, private parties, corporate gatherings, and family milestones."
+      />
       <section className="split-section cream">
         <div>
           <p className="eyebrow tomato">Catering by Papazzio</p>
@@ -467,7 +473,13 @@ function AboutPage() {
 
 function WeddingsPage() {
   return (
-    <main>
+    <main className="page-main">
+      <PageHero
+        eyebrow="Weddings"
+        image={images.wedding}
+        title="Catered celebrations built around the way you gather."
+        text="From ceremony spaces to dinner service, Papazzio shapes wedding menus and event details around your venue, guest count, and style."
+      />
       <section className="statement-section">
         <img src={images.wedding} alt="" loading="lazy" />
         <div>
@@ -491,6 +503,12 @@ function WeddingsPage() {
 function VenuesPage() {
   return (
     <main className="page-main">
+      <PageHero
+        eyebrow="Venues"
+        image="https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/BHS-castle-e1544060445128.jpg?fit=1200%2C900&ssl=1"
+        title="Preferred venues, private rooms, and events at your place."
+        text="Explore the legacy Papazzio venue list, from Bayside and Queens landmarks to Brooklyn event spaces and client-selected locations."
+      />
       <section className="venues-section">
         <div className="section-intro">
           <p className="eyebrow tomato">Some of our venues</p>
@@ -533,6 +551,12 @@ function PackagesPage() {
 
   return (
     <main className="page-main">
+      <PageHero
+        eyebrow="Packages"
+        image={images.trays}
+        title="Buffets, trays, stations, bar options, and event add-ons."
+        text="Browse the catering packages and legacy tray menus with service details, gluten-free notes, upgrades, and dessert options."
+      />
       <section className="packages-section">
         <div className="section-intro">
           <p className="eyebrow gold">Packages and tray menus</p>
@@ -572,6 +596,12 @@ function PackagesPage() {
 function MenuPage() {
   return (
     <main className="page-main">
+      <PageHero
+        eyebrow="Restaurant Menu"
+        image={images.restaurant}
+        title="Papazzio’s restaurant menu, folded into the catering site."
+        text="Dinner, lunch, tray, dessert, wine, happy hour, and seasonal menus from the Papazzio restaurant site."
+      />
       <RestaurantMenuSection />
     </main>
   )
@@ -631,6 +661,12 @@ function RestaurantMenuSection() {
 function RestaurantPage() {
   return (
     <main className="page-main">
+      <PageHero
+        eyebrow="Restaurant"
+        image={images.restaurant}
+        title="The Bell Boulevard restaurant behind the catering."
+        text="Papazzio Restaurant & Caterer brings its Italian kitchen, private party experience, and gluten-free care into the event side."
+      />
       <section className="restaurant-section">
         <img src={images.restaurant} alt="Papazzio restaurant dining room" loading="lazy" />
         <div>
@@ -676,6 +712,12 @@ function RestaurantPage() {
 function GalleryPage() {
   return (
     <main className="page-main">
+      <PageHero
+        eyebrow="Gallery"
+        image="https://i1.wp.com/papazziocatering.com/wp-content/uploads/2018/08/IMG_0021.jpg?fit=1200%2C900&ssl=1"
+        title="Food, venues, and celebration details from Papazzio events."
+        text="A visual archive of catering spreads, rooms, tables, and wedding moments from the legacy Papazzio Catering site."
+      />
       <GallerySection />
     </main>
   )
@@ -703,6 +745,12 @@ function GallerySection() {
 function ContactPage() {
   return (
     <main className="page-main">
+      <PageHero
+        eyebrow="Contact"
+        image="https://i0.wp.com/papazziocatering.com/wp-content/uploads/2019/02/qcf-tent.jpg?w=1200&ssl=1"
+        title="Start the conversation about your event."
+        text="Send the date, guest count, venue, and occasion, or call the catering team directly to begin planning."
+      />
       <section className="contact-section">
         <div>
           <p className="eyebrow tomato">Contact us</p>
@@ -732,6 +780,30 @@ function ContactPage() {
         </div>
       </section>
     </main>
+  )
+}
+
+function PageHero({
+  eyebrow,
+  image,
+  text,
+  title,
+}: {
+  eyebrow: string
+  image: string
+  text: string
+  title: string
+}) {
+  return (
+    <section className="page-hero">
+      <img src={image} alt="" loading="eager" />
+      <div className="page-hero-overlay" />
+      <div className="page-hero-content">
+        <p className="eyebrow gold">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p>{text}</p>
+      </div>
+    </section>
   )
 }
 

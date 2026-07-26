@@ -120,6 +120,61 @@
   color: var(--cream);
 }
 
+.page-hero {
+  position: relative;
+  display: grid;
+  min-height: clamp(25rem, 46vw, 34rem);
+  overflow: hidden;
+  align-items: end;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 5vw, 5rem);
+  border-bottom: 1px solid rgb(31 27 22 / 0.22);
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.page-hero img,
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.page-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.page-hero-overlay {
+  background:
+    linear-gradient(90deg, rgb(19 17 14 / 0.95), rgb(19 17 14 / 0.72), rgb(19 17 14 / 0.28)),
+    linear-gradient(0deg, rgb(19 17 14 / 0.82), transparent 58%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(72rem, 100%);
+}
+
+.page-hero h1 {
+  max-width: 64rem;
+  margin: 1rem 0 0;
+  font-family: var(--heading);
+  font-size: clamp(3.4rem, 7.5vw, 7rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 0.88;
+}
+
+.page-hero-content p:not(.eyebrow) {
+  max-width: 46rem;
+  margin: 1.35rem 0 0;
+  color: rgb(255 248 232 / 0.78);
+  font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+  line-height: 1.7;
+}
+
 .hero-image,
 .hero-overlay {
   position: absolute;
@@ -355,6 +410,7 @@
 }
 
 .quick-info,
+.page-hero,
 .split-section,
 .statement-section,
 .venues-section,
@@ -1157,6 +1213,7 @@
   }
 
   .quick-info,
+  .page-hero,
   .split-section,
   .venues-section,
   .packages-section,
