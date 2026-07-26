@@ -768,7 +768,6 @@ function GallerySection() {
         {gallery.map((image) => (
           <figure key={image.alt}>
             <img src={image.src} alt={image.alt} loading="lazy" />
-            <figcaption>{image.alt}</figcaption>
           </figure>
         ))}
       </div>
