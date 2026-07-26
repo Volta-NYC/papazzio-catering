@@ -38,14 +38,15 @@ const images = {
 }
 
 const navItems = [
-  { label: 'About', href: '#about' },
-  { label: 'Weddings', href: '#weddings' },
-  { label: 'Venues', href: '#venues' },
-  { label: 'Packages', href: '#packages' },
-  { label: 'Our Menu', href: '#our-menu' },
-  { label: 'Restaurant', href: '#restaurant' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Weddings', href: '/weddings' },
+  { label: 'Venues', href: '/venues' },
+  { label: 'Packages', href: '/packages' },
+  { label: 'Our Menu', href: '/menu' },
+  { label: 'Restaurant', href: '/restaurant' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const ticker = [
@@ -329,13 +330,12 @@ const introLabels = [
 ]
 
 function App() {
-  const [openMenuSlug, setOpenMenuSlug] = useState<string | null>(null)
-  const [openPackageTitle, setOpenPackageTitle] = useState<string | null>(null)
+  const currentPath = normalizePath(window.location.pathname)
 
   return (
     <div className="site">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Papazzio Catering home">
+        <a className="brand" href="/" aria-label="Papazzio Catering home">
           <img src={images.logo} alt="" />
           <span>Bayside - NY</span>
         </a>
@@ -351,348 +351,427 @@ function App() {
         </a>
       </header>
 
-      <main id="top">
-        <section className="hero-section">
-          <img className="hero-image" src={images.hero} alt="" fetchPriority="high" />
-          <div className="hero-overlay" />
-          <div className="hero-content">
-            <p className="eyebrow">Elegance in catering</p>
-            <h1>Papazzio Catering</h1>
-            <p>
-              Catering your way. Outstanding food, elegant presentation, and
-              first-class service for weddings, private parties, corporate
-              gatherings, and celebrations across New York.
-            </p>
-            <div className="button-row">
-              <a className="button button-gold" href="#contact">
-                Plan an Event
-              </a>
-              <a className="button button-outline-light" href="#venues">
-                View Venues
-              </a>
-              <a className="button button-ghost-light" href={site.phoneHref}>
-                Call {site.phone}
-              </a>
-            </div>
-          </div>
-          <aside className="hero-note" aria-label="Papazzio catering highlight">
-            <strong>Since 1990</strong>
-            <span>Restaurant hospitality, tailored for your event.</span>
-          </aside>
-        </section>
-
-        <section className="ticker" aria-label="Papazzio Catering services">
-          <div className="ticker-track">
-            {[...ticker, ...ticker, ...ticker].map((item, index) => (
-              <span key={`${item}-${index}`}>
-                {item}
-                <i />
-              </span>
-            ))}
-          </div>
-        </section>
-
-        <section className="quick-info">
-          <InfoCard title="Planning" lines={['One-on-one service', 'Custom event menus']} />
-          <InfoCard title="Events" lines={['Weddings and showers', 'Corporate and private parties']} />
-          <InfoCard title="Reach us" lines={[site.email, site.phone]} />
-        </section>
-
-        <section className="split-section cream" id="about">
-          <div>
-            <p className="eyebrow tomato">Catering by Papazzio</p>
-            <h2>Event planning with the warmth of Papazzio.</h2>
-            <p>
-              Papazzio is an experienced wedding and event caterer located in
-              Bayside, NY. Papazzio Catering has been in the restaurant and catering
-              business since 1990, pairing customized menus with attentive,
-              one-on-one planning.
-            </p>
-            <p>
-              From weddings, showers and sweet sixteens to birthdays and
-              graduations, Papazzio provides event planning services to
-              personalize catered on-site or off-site affairs and realize each
-              client&apos;s unique vision. Services include event planning,
-              tastings, equipment rentals, venue coordination, and flexible
-              planning for a range of budgets.
-            </p>
-            <p>
-              Papazzio also welcomes gluten-free customers and practices strict
-              procedures to prevent cross contamination for gluten-free guests.
-            </p>
-            <div className="legacy-service-list">
-              <strong>Catering Off-site</strong>
-              <span>Papazzio has over 25 years experience in catering weddings and other special events.</span>
-              <strong>Catering at Papazzio</strong>
-              <span>Papazzio is the perfect location for showers, christenings, communions and birthdays.</span>
-              <strong>Trays</strong>
-              <span>For easy entertaining at home or office, Papazzio offers a complete tray menu and will help figure out how much to order.</span>
-            </div>
-            <a className="button button-dark" href="#contact">
-              Start Planning
-            </a>
-          </div>
-          <div className="framed-photo">
-            <img src={images.planning} alt="Papazzio catered table setting" loading="lazy" />
-            <div className="photo-card">
-              <strong>Bring the restaurant standard to the room.</strong>
-            </div>
-          </div>
-        </section>
-
-        <section className="statement-section" id="weddings">
-          <img src={images.wedding} alt="" loading="lazy" />
-          <div>
-            <p className="eyebrow gold">Dedicated in everything we do</p>
-            <h2>Weddings, celebrations, and catered affairs built around your vision.</h2>
-            <p>
-              Striving for excellence, the catering team excels in hospitality
-              for weddings, sweet sixteens, corporate events, bar and bat
-              mitzvahs, fundraisers, private affairs, and more. Papazzio is
-              committed to professional, personalized, reliable service and a
-              delicious menu using only the finest ingredients, with many
-              gluten-free options available.
-            </p>
-          </div>
-        </section>
-
-        <section className="venues-section" id="venues">
-          <div className="section-intro">
-            <p className="eyebrow tomato">Some of our venues</p>
-            <h2>Preferred spaces, private rooms, and wherever your event belongs.</h2>
-            <p>
-              Papazzio caters at preferred venues throughout Queens, Brooklyn,
-              Long Island City, Connecticut, and at client-selected locations
-              that allow outside caterers.
-            </p>
-          </div>
-          <div className="venue-grid">
-            {venues.map((venue, index) => (
-              <article className="venue-card" key={venue.title}>
-                <img src={venue.image} alt="" loading="lazy" />
-                <div>
-                  <span>{venue.place}</span>
-                  <h3>
-                    <small>{String(index + 1).padStart(2, '0')}</small>
-                    {venue.title}
-                  </h3>
-                  <p>{venue.text}</p>
-                  {venue.details && (
-                    <ul>
-                      {venue.details.map((detail) => (
-                        <li key={detail}>{detail}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="packages-section" id="packages">
-          <div className="section-intro">
-            <p className="eyebrow gold">Packages and tray menus</p>
-            <h2>Every off-site package and menu item from the old site.</h2>
-            <p>
-              These are the legacy Papazzio Catering package details, tray
-              prices, gluten-free notes, service inclusions, upgrades, stations,
-              bar options, and dessert choices.
-            </p>
-          </div>
-          <div className="package-list">
-            {packages.map((item) => (
-              <PackageCard
-                isOpen={openPackageTitle === item.title}
-                onToggle={() => setOpenPackageTitle(openPackageTitle === item.title ? null : item.title)}
-                packageItem={item}
-                key={item.title}
-              />
-            ))}
-          </div>
-        </section>
-
-        <section className="options-section">
-          <div className="section-intro">
-            <p className="eyebrow tomato">Additional options</p>
-            <h2>Stations, desserts, bar service, and event add-ons.</h2>
-          </div>
-          <div className="option-grid">
-            {additionalOptions.map((group) => (
-              <MenuGroup group={group} key={group.heading} />
-            ))}
-          </div>
-        </section>
-
-        <section className="our-menu-section" id="our-menu">
-          <div className="section-intro">
-            <p className="eyebrow tomato">Our Menu</p>
-            <h2>The real Papazzio menu, carried over from the Papazzio site.</h2>
-            <p>
-              The legacy catering page named “Our Menu” was a WordPress demo
-              page, but Papazzio&apos;s current site has the actual dinner,
-              lunch, tray, dessert, wine, happy hour, and seasonal menus. Those
-              menus are included here and organized for browsing.
-            </p>
-          </div>
-          <div className="current-menu-list">
-            {menuPages.map((page) => (
-              <article className="current-menu-panel" key={page.slug}>
-                <button
-                  aria-expanded={openMenuSlug === page.slug}
-                  className="current-menu-summary"
-                  onClick={() => setOpenMenuSlug(openMenuSlug === page.slug ? null : page.slug)}
-                  type="button"
-                >
-                  <span>
-                    <small>Papazzio menu</small>
-                    {page.title}
-                  </span>
-                  <img src={page.image} alt="" loading="lazy" />
-                </button>
-                {openMenuSlug === page.slug && (
-                  <div className="current-menu-body">
-                    {parseMenu(page.content, page.title, page.slug).map((section) => (
-                      <section className="current-menu-section" key={`${page.slug}-${section.title}`}>
-                        <h3>{section.title}</h3>
-                        <div>
-                          {section.lines.map((line, index) => (
-                            <MenuItem line={line} key={`${line.title}-${index}`} />
-                          ))}
-                        </div>
-                      </section>
-                    ))}
-                  </div>
-                )}
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="restaurant-section" id="restaurant">
-          <img src={images.restaurant} alt="Papazzio restaurant dining room" loading="lazy" />
-          <div>
-            <p className="eyebrow gold">Restaurants and on-site catering</p>
-            <h2>Papazzio Restaurant & Caterer.</h2>
-            <p>
-              Established in 1990, Papazzio has served Bayside for nearly 30
-              years with Italian favorites and Papazzio originals. For more than
-              25 years, Papazzio has been Bell Boulevard&apos;s mainstay
-              destination, providing a taste of elegance in a comfortable,
-              old-world Tuscany setting with a fusion of Northern and Southern
-              Italian cuisine.
-            </p>
-            <p>
-              The main dining room is available for private parties on Saturday
-              and Sunday afternoons with a minimum of 30 people. Restaurant
-              party packages differ from off-site packages. A small private
-              dining area downstairs in the Wine Room is also available with the
-              Wine Room package or a la carte dinner-menu ordering with a room
-              fee.
-            </p>
-            <p>
-              Restaurant package headings from the legacy page: Premiere Package
-              #1, Premier Package #2, Buffet Menu, Additional Options, and Cake
-              Options.
-            </p>
-            <p>
-              Previti Pizza and Papazzio Dining, located in New Hyde Park, was
-              listed as Papazzio&apos;s newer venture, featuring artisan pizza
-              and some Papazzio classics.
-            </p>
-            <p>
-              Gluten free? Over 90% of Papazzio menus are available
-              gluten-free, and Papazzio practices strict procedures to prevent
-              cross contamination.
-            </p>
-          </div>
-        </section>
-
-        <section className="proof-section">
-          <div>
-            <p className="eyebrow gold">As seen in The Knot Magazine</p>
-            <h2>Elegant events with a neighborhood soul.</h2>
-          </div>
-          <img src={images.knot} alt="As Seen in The Knot Magazine" loading="lazy" />
-        </section>
-
-        <section className="gallery-section" id="gallery">
-          <div className="section-intro">
-            <p className="eyebrow gold">Gallery</p>
-            <h2>A look at the food, rooms, and celebration moments.</h2>
-          </div>
-          <div className="gallery-grid">
-            {gallery.map((image) => (
-              <figure key={image.alt}>
-                <img src={image.src} alt={image.alt} loading="lazy" />
-                <figcaption>{image.alt}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-
-        <section className="contact-section" id="contact">
-          <div>
-            <p className="eyebrow tomato">Contact us</p>
-            <h2>Tell us what you are planning.</h2>
-            <p>
-              Share the occasion, date, guest count, venue, and the kind of
-              experience you want guests to have. Papazzio will help shape the
-              event from there.
-            </p>
-          </div>
-          <div className="contact-panel">
-            <p>
-              {site.addressLine1}
-              <br />
-              {site.addressLine2}
-            </p>
-            <a href={site.phoneHref}>{site.phone}</a>
-            <a href={site.emailHref}>{site.email}</a>
-            <p className="small-note">
-              For off-premise catering services, the legacy site asks guests to
-              call Dominick at 718-229-1962.
-            </p>
-            <div className="button-row compact">
-              <a className="button button-dark" href={site.emailHref}>
-                Email Us
-              </a>
-              <a className="button button-outline-dark" href={site.papazzioUrl}>
-                Papazzio Restaurant
-              </a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="footer">
-        <div>
-          <h2>Papazzio Catering</h2>
-          <p>
-            Outstanding food, elegant presentation, and first-class service for
-            events in Bayside and beyond.
-          </p>
-        </div>
-        <div>
-          <h3>Explore</h3>
-          {navItems.map((item) => (
-            <a href={item.href} key={item.href}>
-              {item.label}
-            </a>
-          ))}
-        </div>
-        <div>
-          <h3>Connect</h3>
-          <a href={site.emailHref}>{site.email}</a>
-          <a href={site.phoneHref}>{site.phone}</a>
-          <a href={site.facebookUrl}>Facebook</a>
-          <a href={site.twitterUrl}>Twitter</a>
-          <a href={site.instagramUrl}>Instagram</a>
-        </div>
-        <p className="trademark">©2019 Papazzio is a registered trademark.</p>
-      </footer>
+      {renderPage(currentPath)}
+      <SiteFooter />
     </div>
   )
+}
+
+function renderPage(path: string) {
+  switch (path) {
+    case '/about':
+      return <AboutPage />
+    case '/weddings':
+      return <WeddingsPage />
+    case '/venues':
+      return <VenuesPage />
+    case '/packages':
+      return <PackagesPage />
+    case '/menu':
+      return <MenuPage />
+    case '/restaurant':
+      return <RestaurantPage />
+    case '/gallery':
+      return <GalleryPage />
+    case '/contact':
+      return <ContactPage />
+    default:
+      return <HomePage />
+  }
+}
+
+function HomePage() {
+  return (
+    <main>
+      <section className="hero-section">
+        <img className="hero-image" src={images.hero} alt="" fetchPriority="high" />
+        <div className="hero-overlay" />
+        <div className="hero-content">
+          <p className="eyebrow">Elegance in catering</p>
+          <h1>Papazzio Catering</h1>
+          <p>
+            Catering your way. Outstanding food, elegant presentation, and
+            first-class service for weddings, private parties, corporate
+            gatherings, and celebrations across New York.
+          </p>
+          <div className="button-row">
+            <a className="button button-gold" href="/contact">Plan an Event</a>
+            <a className="button button-outline-light" href="/venues">View Venues</a>
+            <a className="button button-ghost-light" href={site.phoneHref}>Call {site.phone}</a>
+          </div>
+        </div>
+        <aside className="hero-note" aria-label="Papazzio catering highlight">
+          <strong>Since 1990</strong>
+          <span>Restaurant hospitality, tailored for your event.</span>
+        </aside>
+      </section>
+      <Ticker />
+      <section className="quick-info">
+        <InfoCard title="Planning" lines={['One-on-one service', 'Custom event menus']} />
+        <InfoCard title="Events" lines={['Weddings and showers', 'Corporate and private parties']} />
+        <InfoCard title="Reach us" lines={[site.email, site.phone]} />
+      </section>
+      <section className="proof-section">
+        <div>
+          <p className="eyebrow gold">As seen in The Knot Magazine</p>
+          <h2>Elegant events with a neighborhood soul.</h2>
+        </div>
+        <img src={images.knot} alt="As Seen in The Knot Magazine" loading="lazy" />
+      </section>
+    </main>
+  )
+}
+
+function AboutPage() {
+  return (
+    <main className="page-main">
+      <section className="split-section cream">
+        <div>
+          <p className="eyebrow tomato">Catering by Papazzio</p>
+          <h2>Event planning with the warmth of Papazzio.</h2>
+          <p>
+            Papazzio is an experienced wedding and event caterer located in
+            Bayside, NY. Papazzio Catering has been in the restaurant and
+            catering business since 1990, pairing customized menus with
+            attentive, one-on-one planning.
+          </p>
+          <p>
+            From weddings, showers and sweet sixteens to birthdays and
+            graduations, Papazzio provides event planning services to
+            personalize catered on-site or off-site affairs and realize each
+            client&apos;s unique vision. Services include event planning,
+            tastings, equipment rentals, venue coordination, and flexible
+            planning for a range of budgets.
+          </p>
+          <p>
+            Papazzio also welcomes gluten-free customers and practices strict
+            procedures to prevent cross contamination for gluten-free guests.
+          </p>
+          <div className="legacy-service-list">
+            <strong>Catering Off-site</strong>
+            <span>Papazzio has over 25 years experience in catering weddings and other special events.</span>
+            <strong>Catering at Papazzio</strong>
+            <span>Papazzio is the perfect location for showers, christenings, communions and birthdays.</span>
+            <strong>Trays</strong>
+            <span>For easy entertaining at home or office, Papazzio offers a complete tray menu and will help figure out how much to order.</span>
+          </div>
+          <a className="button button-dark" href="/contact">Start Planning</a>
+        </div>
+        <div className="framed-photo">
+          <img src={images.planning} alt="Papazzio catered table setting" loading="lazy" />
+          <div className="photo-card">
+            <strong>Bring the restaurant standard to the room.</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function WeddingsPage() {
+  return (
+    <main>
+      <section className="statement-section">
+        <img src={images.wedding} alt="" loading="lazy" />
+        <div>
+          <p className="eyebrow gold">Dedicated in everything we do</p>
+          <h2>Weddings, celebrations, and catered affairs built around your vision.</h2>
+          <p>
+            Striving for excellence, the catering team excels in hospitality
+            for weddings, sweet sixteens, corporate events, bar and bat
+            mitzvahs, fundraisers, private affairs, and more. Papazzio is
+            committed to professional, personalized, reliable service and a
+            delicious menu using only the finest ingredients, with many
+            gluten-free options available.
+          </p>
+          <a className="button button-gold" href="/packages">View Packages</a>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function VenuesPage() {
+  return (
+    <main className="page-main">
+      <section className="venues-section">
+        <div className="section-intro">
+          <p className="eyebrow tomato">Some of our venues</p>
+          <h2>Preferred spaces, private rooms, and wherever your event belongs.</h2>
+          <p>
+            Papazzio caters at preferred venues throughout Queens, Brooklyn,
+            Long Island City, Connecticut, and at client-selected locations
+            that allow outside caterers.
+          </p>
+        </div>
+        <div className="venue-grid">
+          {venues.map((venue, index) => (
+            <article className="venue-card" key={venue.title}>
+              <img src={venue.image} alt="" loading="lazy" />
+              <div>
+                <span>{venue.place}</span>
+                <h3>
+                  <small>{String(index + 1).padStart(2, '0')}</small>
+                  {venue.title}
+                </h3>
+                <p>{venue.text}</p>
+                {venue.details && (
+                  <ul>
+                    {venue.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function PackagesPage() {
+  const [openPackageTitle, setOpenPackageTitle] = useState<string | null>(packages[0]?.title || null)
+
+  return (
+    <main className="page-main">
+      <section className="packages-section">
+        <div className="section-intro">
+          <p className="eyebrow gold">Packages and tray menus</p>
+          <h2>Every off-site package and menu item from the old site.</h2>
+          <p>
+            These are the legacy Papazzio Catering package details, tray prices,
+            gluten-free notes, service inclusions, upgrades, stations, bar
+            options, and dessert choices.
+          </p>
+        </div>
+        <div className="package-list">
+          {packages.map((item) => (
+            <PackageCard
+              isOpen={openPackageTitle === item.title}
+              onToggle={() => setOpenPackageTitle(openPackageTitle === item.title ? null : item.title)}
+              packageItem={item}
+              key={item.title}
+            />
+          ))}
+        </div>
+      </section>
+      <section className="options-section">
+        <div className="section-intro">
+          <p className="eyebrow tomato">Additional options</p>
+          <h2>Stations, desserts, bar service, and event add-ons.</h2>
+        </div>
+        <div className="option-grid">
+          {additionalOptions.map((group) => (
+            <MenuGroup group={group} key={group.heading} />
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function MenuPage() {
+  const [openMenuSlug, setOpenMenuSlug] = useState<string | null>(menuPages[0]?.slug || null)
+
+  return (
+    <main className="page-main">
+      <section className="our-menu-section">
+        <div className="section-intro">
+          <p className="eyebrow tomato">Our Menu</p>
+          <h2>The real Papazzio menu, carried over from the Papazzio site.</h2>
+          <p>
+            The legacy catering page named “Our Menu” was a WordPress demo
+            page, but Papazzio&apos;s current site has the actual dinner,
+            lunch, tray, dessert, wine, happy hour, and seasonal menus. Those
+            menus are included here and organized for browsing.
+          </p>
+        </div>
+        <div className="current-menu-list">
+          {menuPages.map((page) => (
+            <article className="current-menu-panel" key={page.slug}>
+              <button
+                aria-expanded={openMenuSlug === page.slug}
+                className="current-menu-summary"
+                onClick={() => setOpenMenuSlug(openMenuSlug === page.slug ? null : page.slug)}
+                type="button"
+              >
+                <span>
+                  <small>Papazzio menu</small>
+                  {page.title}
+                </span>
+                <img src={page.image} alt="" loading="lazy" />
+              </button>
+              {openMenuSlug === page.slug && (
+                <div className="current-menu-body">
+                  {parseMenu(page.content, page.title, page.slug).map((section) => (
+                    <section className="current-menu-section" key={`${page.slug}-${section.title}`}>
+                      <h3>{section.title}</h3>
+                      <div>
+                        {section.lines.map((line, index) => (
+                          <MenuItem line={line} key={`${line.title}-${index}`} />
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function RestaurantPage() {
+  return (
+    <main className="page-main">
+      <section className="restaurant-section">
+        <img src={images.restaurant} alt="Papazzio restaurant dining room" loading="lazy" />
+        <div>
+          <p className="eyebrow gold">Restaurants and on-site catering</p>
+          <h2>Papazzio Restaurant & Caterer.</h2>
+          <p>
+            Established in 1990, Papazzio has served Bayside for nearly 30
+            years with Italian favorites and Papazzio originals. For more than
+            25 years, Papazzio has been Bell Boulevard&apos;s mainstay
+            destination, providing a taste of elegance in a comfortable,
+            old-world Tuscany setting with a fusion of Northern and Southern
+            Italian cuisine.
+          </p>
+          <p>
+            The main dining room is available for private parties on Saturday
+            and Sunday afternoons with a minimum of 30 people. Restaurant party
+            packages differ from off-site packages. A small private dining area
+            downstairs in the Wine Room is also available with the Wine Room
+            package or a la carte dinner-menu ordering with a room fee.
+          </p>
+          <p>
+            Restaurant package headings from the legacy page: Premiere Package
+            #1, Premier Package #2, Buffet Menu, Additional Options, and Cake
+            Options.
+          </p>
+          <p>
+            Previti Pizza and Papazzio Dining, located in New Hyde Park, was
+            listed as Papazzio&apos;s newer venture, featuring artisan pizza and
+            some Papazzio classics.
+          </p>
+          <p>
+            Gluten free? Over 90% of Papazzio menus are available gluten-free,
+            and Papazzio practices strict procedures to prevent cross
+            contamination.
+          </p>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function GalleryPage() {
+  return (
+    <main className="page-main">
+      <section className="gallery-section">
+        <div className="section-intro">
+          <p className="eyebrow gold">Gallery</p>
+          <h2>A look at the food, rooms, and celebration moments.</h2>
+        </div>
+        <div className="gallery-grid">
+          {gallery.map((image) => (
+            <figure key={image.alt}>
+              <img src={image.src} alt={image.alt} loading="lazy" />
+              <figcaption>{image.alt}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function ContactPage() {
+  return (
+    <main className="page-main">
+      <section className="contact-section">
+        <div>
+          <p className="eyebrow tomato">Contact us</p>
+          <h2>Tell us what you are planning.</h2>
+          <p>
+            Share the occasion, date, guest count, venue, and the kind of
+            experience you want guests to have. Papazzio will help shape the
+            event from there.
+          </p>
+        </div>
+        <div className="contact-panel">
+          <p>
+            {site.addressLine1}
+            <br />
+            {site.addressLine2}
+          </p>
+          <a href={site.phoneHref}>{site.phone}</a>
+          <a href={site.emailHref}>{site.email}</a>
+          <p className="small-note">
+            For off-premise catering services, the legacy site asks guests to
+            call Dominick at 718-229-1962.
+          </p>
+          <div className="button-row compact">
+            <a className="button button-dark" href={site.emailHref}>Email Us</a>
+            <a className="button button-outline-dark" href={site.papazzioUrl}>Papazzio Restaurant</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}
+
+function Ticker() {
+  return (
+    <section className="ticker" aria-label="Papazzio Catering services">
+      <div className="ticker-track">
+        {[...ticker, ...ticker, ...ticker].map((item, index) => (
+          <span key={`${item}-${index}`}>
+            {item}
+            <i />
+          </span>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function SiteFooter() {
+  return (
+    <footer className="footer">
+      <div>
+        <h2>Papazzio Catering</h2>
+        <p>
+          Outstanding food, elegant presentation, and first-class service for
+          events in Bayside and beyond.
+        </p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        {navItems.map((item) => (
+          <a href={item.href} key={item.href}>{item.label}</a>
+        ))}
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <a href={site.emailHref}>{site.email}</a>
+        <a href={site.phoneHref}>{site.phone}</a>
+        <a href={site.facebookUrl}>Facebook</a>
+        <a href={site.twitterUrl}>Twitter</a>
+        <a href={site.instagramUrl}>Instagram</a>
+      </div>
+      <p className="trademark">©2019 Papazzio is a registered trademark.</p>
+    </footer>
+  )
+}
+
+function normalizePath(pathname: string) {
+  const path = pathname.replace(/\/+$/, '')
+  return path || '/'
 }
 
 function InfoCard({ lines, title }: { lines: string[]; title: string }) {

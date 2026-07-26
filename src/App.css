@@ -4,6 +4,10 @@
   color: var(--ink);
 }
 
+.page-main {
+  padding-top: 4.6rem;
+}
+
 .site-header {
   position: fixed;
   z-index: 20;
