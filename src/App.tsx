@@ -327,6 +327,7 @@ const introLabels = [
 
 function App() {
   const currentPath = normalizePath(window.location.pathname)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="site">
@@ -345,6 +346,27 @@ function App() {
         <a className="header-cta" href="/contact">
           Contact
         </a>
+        <button
+          className="mobile-menu-button"
+          type="button"
+          aria-controls="mobile-menu"
+          aria-expanded={mobileMenuOpen}
+          onClick={() => setMobileMenuOpen((isOpen) => !isOpen)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <div className={`mobile-menu ${mobileMenuOpen ? 'is-open' : ''}`} id="mobile-menu">
+          {navItems.map((item) => (
+            <a href={item.href} key={item.href} onClick={() => setMobileMenuOpen(false)}>
+              {item.label}
+            </a>
+          ))}
+          <a href="/contact" onClick={() => setMobileMenuOpen(false)}>
+            Contact
+          </a>
+        </div>
       </header>
 
       {renderPage(currentPath)}
