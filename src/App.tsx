@@ -753,28 +753,50 @@ function Ticker() {
 function SiteFooter() {
   return (
     <footer className="footer">
-      <div>
-        <h2>Papazzio Catering</h2>
+      <div className="footer-main">
+        <div className="footer-brand">
+          <p className="eyebrow gold">Papazzio Catering</p>
+          <h2>A taste of elegance for your next event.</h2>
+          <p>
+            Outstanding food, elegant presentation, and first-class service for
+            events in Bayside and beyond.
+          </p>
+          <a className="footer-cta" href="/contact">Start Planning</a>
+        </div>
+        <div className="footer-links">
+          <div>
+            <h3>Explore</h3>
+            {navItems.map((item) => (
+              <a href={item.href} key={item.href}>{item.label}</a>
+            ))}
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <a href={site.phoneHref}>{site.phone}</a>
+            <a href={site.emailHref}>{site.email}</a>
+            <span>
+              {site.addressLine1}
+              <br />
+              {site.addressLine2}
+            </span>
+          </div>
+          <div>
+            <h3>Social</h3>
+            <a href={site.facebookUrl}>Facebook</a>
+            <a href={site.twitterUrl}>Twitter</a>
+            <a href={site.instagramUrl}>Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p>©2019 Papazzio is a registered trademark.</p>
         <p>
-          Outstanding food, elegant presentation, and first-class service for
-          events in Bayside and beyond.
+          Made by{' '}
+          <a className="volta-link" href="https://voltanyc.org/" rel="noreferrer" target="_blank">
+            Volta
+          </a>
         </p>
       </div>
-      <div>
-        <h3>Explore</h3>
-        {navItems.map((item) => (
-          <a href={item.href} key={item.href}>{item.label}</a>
-        ))}
-      </div>
-      <div>
-        <h3>Connect</h3>
-        <a href={site.emailHref}>{site.email}</a>
-        <a href={site.phoneHref}>{site.phone}</a>
-        <a href={site.facebookUrl}>Facebook</a>
-        <a href={site.twitterUrl}>Twitter</a>
-        <a href={site.instagramUrl}>Instagram</a>
-      </div>
-      <p className="trademark">©2019 Papazzio is a registered trademark.</p>
     </footer>
   )
 }
