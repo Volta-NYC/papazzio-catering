@@ -785,7 +785,7 @@
 }
 
 .package-card.is-last .package-groups {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .package-card:hover {
@@ -897,6 +897,78 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin: 1rem clamp(1.1rem, 2.6vw, 1.7rem) clamp(1.1rem, 2.6vw, 1.7rem);
+}
+
+.package-group-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgb(255 248 232 / 0.16);
+  background: rgb(255 248 232 / 0.06);
+}
+
+.package-group-card.is-open {
+  grid-column: 1 / -1;
+}
+
+.package-group-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  padding: 1rem;
+  text-align: left;
+}
+
+.package-group-toggle span {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.package-group-toggle strong {
+  color: var(--cream);
+  font-size: 0.82rem;
+  font-weight: 950;
+  letter-spacing: 0.16em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.package-group-toggle em {
+  color: rgb(255 248 232 / 0.56);
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.package-group-toggle b {
+  flex: 0 0 auto;
+  border: 1px solid rgb(255 248 232 / 0.28);
+  border-radius: 999px;
+  padding: 0.55rem 0.7rem;
+  color: var(--gold);
+  font-size: 0.62rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.package-group-toggle:hover {
+  background: rgb(255 248 232 / 0.06);
+}
+
+.package-group-toggle:hover b {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.package-group-card .menu-group {
+  margin: 0 1rem 1rem;
 }
 
 .menu-group {

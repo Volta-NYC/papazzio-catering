@@ -939,6 +939,8 @@ function PackageCard({
     groups: { heading: string; items: string[] }[]
   }
 }) {
+  const [openGroupHeadings, setOpenGroupHeadings] = useState<string[]>([])
+
   return (
     <article className={`package-card${isOpen ? ' is-open' : ''}${index === packages.length - 1 ? ' is-last' : ''}`}>
       <button aria-expanded={isOpen} className="package-toggle" onClick={onToggle} type="button">
@@ -958,12 +960,44 @@ function PackageCard({
           ))}
           <div className="package-groups">
             {packageItem.groups.map((group) => (
-              <MenuGroup group={group} key={group.heading} />
+              <PackageGroupCard
+                group={group}
+                isOpen={openGroupHeadings.includes(group.heading)}
+                key={group.heading}
+                onToggle={() => setOpenGroupHeadings((headings) => (
+                  headings.includes(group.heading)
+                    ? headings.filter((heading) => heading !== group.heading)
+                    : [...headings, group.heading]
+                ))}
+              />
             ))}
           </div>
         </>
       )}
     </article>
+  )
+}
+
+function PackageGroupCard({
+  group,
+  isOpen,
+  onToggle,
+}: {
+  group: { heading: string; items: string[] }
+  isOpen: boolean
+  onToggle: () => void
+}) {
+  return (
+    <div className={`package-group-card${isOpen ? ' is-open' : ''}`}>
+      <button aria-expanded={isOpen} className="package-group-toggle" onClick={onToggle} type="button">
+        <span>
+          <strong>{group.heading}</strong>
+          <em>{group.items.length} items</em>
+        </span>
+        <b>{isOpen ? 'Close' : 'Open'}</b>
+      </button>
+      {isOpen && <MenuGroup group={group} />}
+    </div>
   )
 }
 
