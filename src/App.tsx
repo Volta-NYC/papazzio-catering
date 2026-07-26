@@ -42,7 +42,6 @@ const navItems = [
   { label: 'Weddings', href: '/weddings' },
   { label: 'Venues', href: '/venues' },
   { label: 'Packages', href: '/packages' },
-  { label: 'Our Menu', href: '/menu' },
   { label: 'Restaurant', href: '/restaurant' },
 ]
 
@@ -571,55 +570,61 @@ function PackagesPage() {
 }
 
 function MenuPage() {
+  return (
+    <main className="page-main">
+      <RestaurantMenuSection />
+    </main>
+  )
+}
+
+function RestaurantMenuSection() {
   const [openMenuSlug, setOpenMenuSlug] = useState<string | null>(menuPages[0]?.slug || null)
 
   return (
-    <main className="page-main">
-      <section className="our-menu-section">
-        <div className="section-intro">
-          <p className="eyebrow tomato">Our Menu</p>
-          <h2>The real Papazzio menu, carried over from the Papazzio site.</h2>
-          <p>
-            The legacy catering page named “Our Menu” was a WordPress demo
-            page, but Papazzio&apos;s current site has the actual dinner,
-            lunch, tray, dessert, wine, happy hour, and seasonal menus. Those
-            menus are included here and organized for browsing.
-          </p>
-        </div>
-        <div className="current-menu-list">
-          {menuPages.map((page) => (
-            <article className="current-menu-panel" key={page.slug}>
-              <button
-                aria-expanded={openMenuSlug === page.slug}
-                className="current-menu-summary"
-                onClick={() => setOpenMenuSlug(openMenuSlug === page.slug ? null : page.slug)}
-                type="button"
-              >
-                <span>
-                  <small>Papazzio menu</small>
-                  {page.title}
-                </span>
-                <img src={page.image} alt="" loading="lazy" />
-              </button>
-              {openMenuSlug === page.slug && (
-                <div className="current-menu-body">
-                  {parseMenu(page.content, page.title, page.slug).map((section) => (
-                    <section className="current-menu-section" key={`${page.slug}-${section.title}`}>
-                      <h3>{section.title}</h3>
-                      <div>
-                        {section.lines.map((line, index) => (
-                          <MenuItem line={line} key={`${line.title}-${index}`} />
-                        ))}
-                      </div>
-                    </section>
-                  ))}
-                </div>
-              )}
-            </article>
-          ))}
-        </div>
-      </section>
-    </main>
+    <section className="our-menu-section">
+      <div className="section-intro">
+        <p className="eyebrow tomato">Our Menu</p>
+        <h2>The real Papazzio menu, carried over from the Papazzio site.</h2>
+        <p>
+          The legacy catering page named “Our Menu” was a WordPress demo
+          page, but Papazzio&apos;s current site has the actual dinner, lunch,
+          tray, dessert, wine, happy hour, and seasonal menus. Those menus are
+          included here and organized for browsing.
+        </p>
+      </div>
+      <div className="current-menu-list">
+        {menuPages.map((page) => (
+          <article className="current-menu-panel" key={page.slug}>
+            <button
+              aria-expanded={openMenuSlug === page.slug}
+              className="current-menu-summary"
+              onClick={() => setOpenMenuSlug(openMenuSlug === page.slug ? null : page.slug)}
+              type="button"
+            >
+              <span>
+                <small>Papazzio menu</small>
+                {page.title}
+              </span>
+              <img src={page.image} alt="" loading="lazy" />
+            </button>
+            {openMenuSlug === page.slug && (
+              <div className="current-menu-body">
+                {parseMenu(page.content, page.title, page.slug).map((section) => (
+                  <section className="current-menu-section" key={`${page.slug}-${section.title}`}>
+                    <h3>{section.title}</h3>
+                    <div>
+                      {section.lines.map((line, index) => (
+                        <MenuItem line={line} key={`${line.title}-${index}`} />
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
   )
 }
 
@@ -663,6 +668,7 @@ function RestaurantPage() {
           </p>
         </div>
       </section>
+      <RestaurantMenuSection />
     </main>
   )
 }
