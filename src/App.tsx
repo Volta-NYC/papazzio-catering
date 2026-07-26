@@ -574,7 +574,7 @@ function VenuesPage() {
 }
 
 function PackagesPage() {
-  const [openPackageTitle, setOpenPackageTitle] = useState<string | null>(packages[0]?.title || null)
+  const [openPackageTitle, setOpenPackageTitle] = useState<string | null>(null)
 
   return (
     <main className="page-main">
@@ -591,7 +591,8 @@ function PackagesPage() {
           <p>
             These are the legacy Papazzio Catering package details, tray prices,
             gluten-free notes, service inclusions, upgrades, stations, bar
-            options, and dessert choices.
+            options, and dessert choices. Select a package below to see the
+            full details.
           </p>
         </div>
         <div className="package-list">
@@ -933,8 +934,14 @@ function PackageCard({
   return (
     <article className="package-card">
       <button aria-expanded={isOpen} className="package-toggle" onClick={onToggle} type="button">
-        <span>{packageItem.title}</span>
-        <small>{isOpen ? 'Hide details' : 'View details'}</small>
+        <span>
+          <strong>{packageItem.title}</strong>
+          <em>{packageItem.intro[0]}</em>
+        </span>
+        <small>
+          {packageItem.groups.length} sections
+          <b>{isOpen ? 'Hide' : 'View details'}</b>
+        </small>
       </button>
       {isOpen && (
         <>

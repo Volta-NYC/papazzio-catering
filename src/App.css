@@ -283,7 +283,7 @@
 }
 
 .button-gold:hover {
-  background: var(--cream);
+  background: #d7aa42;
 }
 
 .button-dark {
@@ -292,7 +292,7 @@
 }
 
 .button-dark:hover {
-  background: var(--tomato);
+  background: #3a3027;
 }
 
 .button-outline-light,
@@ -306,8 +306,9 @@
 }
 
 .button-outline-light:hover {
-  background: var(--cream);
-  color: var(--ink);
+  border-color: var(--gold);
+  background: rgb(240 195 90 / 0.16);
+  color: var(--cream);
 }
 
 .button-outline-dark {
@@ -742,16 +743,34 @@
 
 .package-list {
   display: grid;
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
 }
 
 .package-card {
+  overflow: hidden;
   border: 1px solid rgb(255 248 232 / 0.18);
-  background: rgb(255 248 232 / 0.045);
-  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background: rgb(255 248 232 / 0.05);
+  transition: background 180ms, border-color 180ms, box-shadow 180ms, transform 180ms;
 }
 
-.package-toggle span,
+.package-card:hover {
+  border-color: rgb(240 195 90 / 0.58);
+  background: rgb(255 248 232 / 0.08);
+  box-shadow: 6px 6px 0 rgb(240 195 90 / 0.18);
+  transform: translateY(-2px);
+}
+
+.package-toggle span strong {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(2rem, 3.6vw, 3.7rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
 .restaurant-section h2 {
   margin: 0;
   font-family: var(--heading);
@@ -762,32 +781,60 @@
 }
 
 .package-toggle {
-  display: flex;
+  display: grid;
   width: 100%;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   border: 0;
   background: transparent;
   color: var(--cream);
   cursor: pointer;
-  padding: 0;
+  padding: clamp(1.1rem, 2.6vw, 1.7rem);
   text-align: left;
 }
 
+.package-toggle span {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.package-toggle em {
+  display: -webkit-box;
+  max-width: 42rem;
+  overflow: hidden;
+  color: rgb(255 248 232 / 0.66);
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 650;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .package-toggle small {
+  display: grid;
   flex: 0 0 auto;
+  gap: 0.55rem;
+  justify-items: end;
+  color: rgb(255 248 232 / 0.54);
+  font-size: 0.66rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.package-toggle small b {
   border: 1px solid rgb(255 248 232 / 0.35);
   border-radius: 999px;
   padding: 0.75rem 1rem;
   color: var(--gold);
-  font-size: 0.68rem;
-  font-weight: 950;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.package-toggle:hover small {
+.package-toggle:hover small b {
   border-color: var(--gold);
   background: var(--gold);
   color: var(--ink);
@@ -795,9 +842,15 @@
 
 .package-card > p {
   max-width: 68rem;
-  margin: 1rem 0 0;
+  margin: 0;
+  padding: 0 clamp(1.1rem, 2.6vw, 1.7rem) 1rem;
   color: rgb(255 248 232 / 0.72);
   line-height: 1.75;
+}
+
+.package-card > p:first-of-type {
+  border-top: 1px solid rgb(255 248 232 / 0.14);
+  padding-top: 1.1rem;
 }
 
 .package-groups,
@@ -805,7 +858,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  margin-top: 2rem;
+  margin: 1rem clamp(1.1rem, 2.6vw, 1.7rem) clamp(1.1rem, 2.6vw, 1.7rem);
 }
 
 .menu-group {
@@ -1198,8 +1251,8 @@
 }
 
 .footer-cta:hover {
-  border-color: var(--cream);
-  background: var(--cream);
+  border-color: #d7aa42;
+  background: #d7aa42;
   transform: translateY(-1px);
 }
 
@@ -1281,6 +1334,7 @@
   }
 
   .package-groups,
+  .package-list,
   .option-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1382,6 +1436,7 @@
   }
 
   .package-groups,
+  .package-list,
   .option-grid {
     grid-template-columns: 1fr;
   }
@@ -1395,8 +1450,11 @@
   }
 
   .package-toggle {
-    align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+
+  .package-toggle small {
+    justify-items: start;
   }
 
   .contact-panel {
