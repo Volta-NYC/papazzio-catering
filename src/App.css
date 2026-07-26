@@ -2,6 +2,7 @@
   min-height: 100vh;
   background: var(--cream);
   color: var(--ink);
+  font-family: var(--sans);
 }
 
 .page-main {
@@ -162,7 +163,7 @@
   margin: 1rem 0 0;
   font-family: var(--heading);
   font-size: clamp(3.4rem, 7.5vw, 7rem);
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 0.88;
 }
@@ -172,6 +173,7 @@
   margin: 1.35rem 0 0;
   color: rgb(255 248 232 / 0.78);
   font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+  font-weight: 650;
   line-height: 1.7;
 }
 
@@ -227,7 +229,7 @@
 .footer h2 {
   margin: 0;
   font-family: var(--heading);
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -243,6 +245,7 @@
   margin-top: 1.7rem;
   color: rgb(255 248 232 / 0.78);
   font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  font-weight: 650;
   line-height: 1.65;
 }
 
@@ -449,7 +452,7 @@
   display: block;
   font-family: var(--heading);
   font-size: clamp(1.3rem, 2vw, 1.85rem);
-  font-weight: 950;
+  font-weight: 700;
   line-height: 1.1;
 }
 
@@ -483,6 +486,7 @@
   margin: 1.35rem 0 0;
   color: rgb(31 27 22 / 0.72);
   font-size: 1.05rem;
+  font-weight: 600;
   line-height: 1.8;
 }
 
@@ -506,6 +510,7 @@
 
 .legacy-service-list span {
   color: rgb(31 27 22 / 0.74);
+  font-weight: 650;
   line-height: 1.55;
 }
 
@@ -592,7 +597,7 @@
   margin: 1rem 0 0;
   font-family: var(--heading);
   font-size: clamp(2.7rem, 5.8vw, 5.8rem);
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 0.9;
 }
@@ -602,6 +607,7 @@
   margin: 1.35rem 0 0;
   color: rgb(31 27 22 / 0.72);
   font-size: 1.05rem;
+  font-weight: 600;
   line-height: 1.8;
 }
 
@@ -623,7 +629,7 @@
   color: var(--tomato);
   font-family: var(--heading);
   font-size: 2.6rem;
-  font-weight: 950;
+  font-weight: 700;
   line-height: 0.9;
 }
 
@@ -632,13 +638,14 @@
   margin-top: 1.35rem;
   font-family: var(--heading);
   font-size: clamp(1.45rem, 2vw, 2.1rem);
-  font-weight: 950;
+  font-weight: 700;
   line-height: 1;
 }
 
 .wedding-notes p {
   margin: 1rem 0 0;
   color: rgb(31 27 22 / 0.68);
+  font-weight: 600;
   line-height: 1.65;
 }
 
@@ -698,7 +705,7 @@
   margin: 0.8rem 0 0;
   font-family: var(--heading);
   font-size: clamp(1.4rem, 2.2vw, 2rem);
-  font-weight: 950;
+  font-weight: 700;
   line-height: 1.02;
 }
 
@@ -711,6 +718,7 @@
   margin: 1rem 0 0;
   color: rgb(31 27 22 / 0.68);
   font-size: 0.96rem;
+  font-weight: 600;
   line-height: 1.65;
 }
 
@@ -777,7 +785,7 @@
   margin: 0;
   font-family: var(--heading);
   font-size: clamp(2rem, 3.6vw, 3.7rem);
-  font-weight: 950;
+  font-weight: 700;
   line-height: 0.95;
   letter-spacing: 0;
 }
@@ -786,7 +794,7 @@
   margin: 0;
   font-family: var(--heading);
   font-size: clamp(2.2rem, 5vw, 4.8rem);
-  font-weight: 950;
+  font-weight: 700;
   line-height: 0.95;
   letter-spacing: 0;
 }
@@ -860,6 +868,7 @@
   margin: 0;
   padding: 0 clamp(1.1rem, 2.6vw, 1.7rem) 1rem;
   color: rgb(255 248 232 / 0.72);
+  font-weight: 600;
   line-height: 1.75;
 }
 
@@ -926,7 +935,7 @@
   align-items: flex-start;
   color: rgb(31 27 22 / 0.76);
   font-size: 0.96rem;
-  font-weight: 700;
+  font-weight: 650;
   line-height: 1.45;
 }
 
@@ -994,7 +1003,7 @@
   padding: 1rem 0;
   font-family: var(--heading);
   font-size: clamp(1.7rem, 2.8vw, 3rem);
-  font-weight: 950;
+  font-weight: 700;
   line-height: 0.95;
 }
 
@@ -1073,7 +1082,7 @@
   margin: 0;
   font-family: var(--heading);
   font-size: 1.35rem;
-  font-weight: 950;
+  font-weight: 700;
   line-height: 1.05;
 }
 
@@ -1081,6 +1090,7 @@
 .current-menu-note {
   margin: 0.35rem 0 0;
   color: rgb(31 27 22 / 0.68);
+  font-weight: 600;
   line-height: 1.55;
 }
 
@@ -1118,6 +1128,8 @@
 .restaurant-section p:not(.eyebrow) {
   margin: 1rem 0 0;
   color: rgb(255 248 232 / 0.78);
+  font-size: 1.03rem;
+  font-weight: 600;
   line-height: 1.75;
 }
 
@@ -1219,7 +1231,7 @@
   color: var(--ink);
   font-family: var(--heading);
   font-size: clamp(1.5rem, 3vw, 2.4rem);
-  font-weight: 950;
+  font-weight: 700;
   line-height: 1.1;
 }
 
