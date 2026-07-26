@@ -477,23 +477,50 @@ function WeddingsPage() {
       <PageHero
         eyebrow="Weddings"
         image={images.wedding}
-        title="Catered celebrations built around the way you gather."
+        title="Wedding catering with a real restaurant behind it."
         text="From ceremony spaces to dinner service, Papazzio shapes wedding menus and event details around your venue, guest count, and style."
       />
-      <section className="statement-section">
-        <img src={images.wedding} alt="" loading="lazy" />
-        <div>
-          <p className="eyebrow gold">Dedicated in everything we do</p>
-          <h2>Weddings, celebrations, and catered affairs built around your vision.</h2>
+      <section className="wedding-detail-section">
+        <div className="wedding-copy">
+          <p className="eyebrow tomato">Dedicated in everything we do</p>
+          <h2>Menus, service, and planning that fit the room.</h2>
           <p>
             Striving for excellence, the catering team excels in hospitality
-            for weddings, sweet sixteens, corporate events, bar and bat
-            mitzvahs, fundraisers, private affairs, and more. Papazzio is
-            committed to professional, personalized, reliable service and a
-            delicious menu using only the finest ingredients, with many
-            gluten-free options available.
+            for weddings, cocktail hours, dinner receptions, and private
+            affairs. Papazzio pairs personalized planning with reliable service
+            and a delicious menu using quality ingredients.
           </p>
-          <a className="button button-gold" href="/packages">View Packages</a>
+          <p>
+            The team can work at Papazzio, at preferred venues, or at locations
+            that allow outside caterers, with many gluten-free options
+            available for guests who need them.
+          </p>
+          <div className="button-row compact">
+            <a className="button button-dark" href="/packages">View Packages</a>
+            <a className="button button-outline-dark" href="/contact">Ask About Dates</a>
+          </div>
+        </div>
+        <div className="wedding-notes" aria-label="Wedding catering highlights">
+          <div>
+            <span>01</span>
+            <strong>Passed hors d’oeuvres</strong>
+            <p>Cocktail-hour service with classic Papazzio selections and upgrade options.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <strong>Buffet or sit-down</strong>
+            <p>Flexible service styles for intimate rooms, barns, ballrooms, and private locations.</p>
+          </div>
+          <div>
+            <span>03</span>
+            <strong>Bar and dessert</strong>
+            <p>Beer, wine, liquor, cake, coffee, tea, and add-ons depending on the package.</p>
+          </div>
+          <div>
+            <span>04</span>
+            <strong>Gluten-free care</strong>
+            <p>Many menu items can be prepared gluten-free with careful handling procedures.</p>
+          </div>
         </div>
       </section>
     </main>

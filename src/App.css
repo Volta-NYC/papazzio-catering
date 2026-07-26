@@ -413,6 +413,7 @@
 .page-hero,
 .split-section,
 .statement-section,
+.wedding-detail-section,
 .venues-section,
 .packages-section,
 .options-section,
@@ -570,6 +571,74 @@
 
 .statement-section p {
   color: rgb(255 248 232 / 0.78);
+}
+
+.wedding-detail-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+  padding: 6rem clamp(1rem, 5vw, 5rem);
+  background: var(--paper);
+}
+
+.wedding-copy {
+  position: sticky;
+  top: 6rem;
+}
+
+.wedding-copy h2 {
+  margin: 1rem 0 0;
+  font-family: var(--heading);
+  font-size: clamp(2.7rem, 5.8vw, 5.8rem);
+  font-weight: 950;
+  letter-spacing: 0;
+  line-height: 0.9;
+}
+
+.wedding-copy p:not(.eyebrow) {
+  max-width: 42rem;
+  margin: 1.35rem 0 0;
+  color: rgb(31 27 22 / 0.72);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.wedding-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.wedding-notes div {
+  min-height: 15rem;
+  padding: 1.35rem;
+  border: 1px solid rgb(31 27 22 / 0.16);
+  background: var(--cream);
+  box-shadow: 8px 8px 0 rgb(31 27 22 / 0.08);
+}
+
+.wedding-notes span {
+  color: var(--tomato);
+  font-family: var(--heading);
+  font-size: 2.6rem;
+  font-weight: 950;
+  line-height: 0.9;
+}
+
+.wedding-notes strong {
+  display: block;
+  margin-top: 1.35rem;
+  font-family: var(--heading);
+  font-size: clamp(1.45rem, 2vw, 2.1rem);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.wedding-notes p {
+  margin: 1rem 0 0;
+  color: rgb(31 27 22 / 0.68);
+  line-height: 1.65;
 }
 
 .venues-section {
@@ -1215,6 +1284,7 @@
   .quick-info,
   .page-hero,
   .split-section,
+  .wedding-detail-section,
   .venues-section,
   .packages-section,
   .options-section,
@@ -1224,6 +1294,14 @@
   .contact-section {
     padding-top: 4rem;
     padding-bottom: 4rem;
+  }
+
+  .wedding-copy {
+    position: static;
+  }
+
+  .wedding-notes {
+    grid-template-columns: 1fr;
   }
 
   .photo-card {
