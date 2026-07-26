@@ -637,7 +637,7 @@ function MenuPage() {
 }
 
 function RestaurantMenuSection() {
-  const [openMenuSlug, setOpenMenuSlug] = useState<string | null>(menuPages[0]?.slug || null)
+  const [openMenuSlugs, setOpenMenuSlugs] = useState<string[]>([])
 
   return (
     <section className="our-menu-section">
@@ -653,11 +653,15 @@ function RestaurantMenuSection() {
       </div>
       <div className="current-menu-list" aria-label="Papazzio restaurant menus">
         {menuPages.map((page) => (
-          <article className="current-menu-panel" key={page.slug}>
+          <article className={`current-menu-panel${openMenuSlugs.includes(page.slug) ? ' is-open' : ''}`} key={page.slug}>
             <button
-              aria-expanded={openMenuSlug === page.slug}
+              aria-expanded={openMenuSlugs.includes(page.slug)}
               className="current-menu-summary"
-              onClick={() => setOpenMenuSlug(openMenuSlug === page.slug ? null : page.slug)}
+              onClick={() => setOpenMenuSlugs((slugs) => (
+                slugs.includes(page.slug)
+                  ? slugs.filter((slug) => slug !== page.slug)
+                  : [...slugs, page.slug]
+              ))}
               type="button"
             >
               <img src={page.image} alt="" loading="lazy" />
@@ -665,9 +669,9 @@ function RestaurantMenuSection() {
                 <small>Papazzio menu</small>
                 {page.title}
               </span>
-              <b>{openMenuSlug === page.slug ? 'Close' : 'Open'}</b>
+              <b>{openMenuSlugs.includes(page.slug) ? 'Close' : 'Open'}</b>
             </button>
-            {openMenuSlug === page.slug && (
+            {openMenuSlugs.includes(page.slug) && (
               <div className="current-menu-body">
                 {parseMenu(page.content, page.title, page.slug).map((section) => (
                   <section className="current-menu-section" key={`${page.slug}-${section.title}`}>

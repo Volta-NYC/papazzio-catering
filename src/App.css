@@ -976,6 +976,10 @@
   box-shadow: 6px 6px 0 rgb(31 27 22 / 0.16);
 }
 
+.current-menu-panel.is-open {
+  grid-column: 1 / -1;
+}
+
 .current-menu-summary {
   display: grid;
   width: 100%;
@@ -1043,8 +1047,10 @@
 
 .current-menu-body {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   padding: 0 1rem 1rem;
+  contain: layout paint;
 }
 
 .current-menu-section {
@@ -1453,6 +1459,10 @@
   }
 
   .current-menu-list {
+    grid-template-columns: 1fr;
+  }
+
+  .current-menu-body {
     grid-template-columns: 1fr;
   }
 
