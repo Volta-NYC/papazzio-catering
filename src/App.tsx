@@ -973,6 +973,12 @@ function SiteFooter() {
             events in Bayside and beyond.
           </p>
           <a className="footer-cta" href="/contact">Start Planning</a>
+          <p className="footer-credit">
+            Made by{' '}
+            <a className="volta-link" href="https://voltanyc.org/" rel="noreferrer" target="_blank">
+              Volta
+            </a>
+          </p>
         </div>
         <div className="footer-links">
           <div>
@@ -1001,12 +1007,6 @@ function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <p>©2019 Papazzio is a registered trademark.</p>
-        <p>
-          Made by{' '}
-          <a className="volta-link" href="https://voltanyc.org/" rel="noreferrer" target="_blank">
-            Volta
-          </a>
-        </p>
       </div>
     </footer>
   )
