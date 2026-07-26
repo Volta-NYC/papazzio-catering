@@ -846,8 +846,8 @@ function Ticker() {
   return (
     <section className="ticker" aria-label="Papazzio Catering services">
       <div className="ticker-track">
-        {[...ticker, ...ticker, ...ticker].map((item, index) => (
-          <span key={`${item}-${index}`}>
+        {ticker.map((item) => (
+          <span key={item}>
             {item}
             <i />
           </span>
