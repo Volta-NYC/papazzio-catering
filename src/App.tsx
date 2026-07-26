@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import { menuPages } from './menu-pages'
 
@@ -328,6 +329,9 @@ const introLabels = [
 ]
 
 function App() {
+  const [openMenuSlug, setOpenMenuSlug] = useState<string | null>(null)
+  const [openPackageTitle, setOpenPackageTitle] = useState<string | null>(null)
+
   return (
     <div className="site">
       <header className="site-header">
@@ -349,7 +353,7 @@ function App() {
 
       <main id="top">
         <section className="hero-section">
-          <img className="hero-image" src={images.hero} alt="" />
+          <img className="hero-image" src={images.hero} alt="" fetchPriority="high" />
           <div className="hero-overlay" />
           <div className="hero-content">
             <p className="eyebrow">Elegance in catering</p>
@@ -429,7 +433,7 @@ function App() {
             </a>
           </div>
           <div className="framed-photo">
-            <img src={images.planning} alt="Papazzio catered table setting" />
+            <img src={images.planning} alt="Papazzio catered table setting" loading="lazy" />
             <div className="photo-card">
               <strong>Bring the restaurant standard to the room.</strong>
             </div>
@@ -437,7 +441,7 @@ function App() {
         </section>
 
         <section className="statement-section" id="weddings">
-          <img src={images.wedding} alt="" />
+          <img src={images.wedding} alt="" loading="lazy" />
           <div>
             <p className="eyebrow gold">Dedicated in everything we do</p>
             <h2>Weddings, celebrations, and catered affairs built around your vision.</h2>
@@ -465,7 +469,7 @@ function App() {
           <div className="venue-grid">
             {venues.map((venue, index) => (
               <article className="venue-card" key={venue.title}>
-                <img src={venue.image} alt="" />
+                <img src={venue.image} alt="" loading="lazy" />
                 <div>
                   <span>{venue.place}</span>
                   <h3>
@@ -498,7 +502,12 @@ function App() {
           </div>
           <div className="package-list">
             {packages.map((item) => (
-              <PackageCard packageItem={item} key={item.title} />
+              <PackageCard
+                isOpen={openPackageTitle === item.title}
+                onToggle={() => setOpenPackageTitle(openPackageTitle === item.title ? null : item.title)}
+                packageItem={item}
+                key={item.title}
+              />
             ))}
           </div>
         </section>
@@ -528,33 +537,40 @@ function App() {
           </div>
           <div className="current-menu-list">
             {menuPages.map((page) => (
-              <details className="current-menu-panel" key={page.slug}>
-                <summary>
+              <article className="current-menu-panel" key={page.slug}>
+                <button
+                  aria-expanded={openMenuSlug === page.slug}
+                  className="current-menu-summary"
+                  onClick={() => setOpenMenuSlug(openMenuSlug === page.slug ? null : page.slug)}
+                  type="button"
+                >
                   <span>
                     <small>Papazzio menu</small>
                     {page.title}
                   </span>
-                  <img src={page.image} alt="" />
-                </summary>
-                <div className="current-menu-body">
-                  {parseMenu(page.content, page.title, page.slug).map((section) => (
-                    <section className="current-menu-section" key={`${page.slug}-${section.title}`}>
-                      <h3>{section.title}</h3>
-                      <div>
-                        {section.lines.map((line, index) => (
-                          <MenuItem line={line} key={`${line.title}-${index}`} />
-                        ))}
-                      </div>
-                    </section>
-                  ))}
-                </div>
-              </details>
+                  <img src={page.image} alt="" loading="lazy" />
+                </button>
+                {openMenuSlug === page.slug && (
+                  <div className="current-menu-body">
+                    {parseMenu(page.content, page.title, page.slug).map((section) => (
+                      <section className="current-menu-section" key={`${page.slug}-${section.title}`}>
+                        <h3>{section.title}</h3>
+                        <div>
+                          {section.lines.map((line, index) => (
+                            <MenuItem line={line} key={`${line.title}-${index}`} />
+                          ))}
+                        </div>
+                      </section>
+                    ))}
+                  </div>
+                )}
+              </article>
             ))}
           </div>
         </section>
 
         <section className="restaurant-section" id="restaurant">
-          <img src={images.restaurant} alt="Papazzio restaurant dining room" />
+          <img src={images.restaurant} alt="Papazzio restaurant dining room" loading="lazy" />
           <div>
             <p className="eyebrow gold">Restaurants and on-site catering</p>
             <h2>Papazzio Restaurant & Caterer.</h2>
@@ -597,7 +613,7 @@ function App() {
             <p className="eyebrow gold">As seen in The Knot Magazine</p>
             <h2>Elegant events with a neighborhood soul.</h2>
           </div>
-          <img src={images.knot} alt="As Seen in The Knot Magazine" />
+          <img src={images.knot} alt="As Seen in The Knot Magazine" loading="lazy" />
         </section>
 
         <section className="gallery-section" id="gallery">
@@ -608,7 +624,7 @@ function App() {
           <div className="gallery-grid">
             {gallery.map((image) => (
               <figure key={image.alt}>
-                <img src={image.src} alt={image.alt} />
+                <img src={image.src} alt={image.alt} loading="lazy" />
                 <figcaption>{image.alt}</figcaption>
               </figure>
             ))}
@@ -691,8 +707,12 @@ function InfoCard({ lines, title }: { lines: string[]; title: string }) {
 }
 
 function PackageCard({
+  isOpen,
+  onToggle,
   packageItem,
 }: {
+  isOpen: boolean
+  onToggle: () => void
   packageItem: {
     title: string
     intro: string[]
@@ -701,15 +721,22 @@ function PackageCard({
 }) {
   return (
     <article className="package-card">
-      <h3>{packageItem.title}</h3>
-      {packageItem.intro.map((paragraph) => (
-        <p key={paragraph}>{paragraph}</p>
-      ))}
-      <div className="package-groups">
-        {packageItem.groups.map((group) => (
-          <MenuGroup group={group} key={group.heading} />
-        ))}
-      </div>
+      <button aria-expanded={isOpen} className="package-toggle" onClick={onToggle} type="button">
+        <span>{packageItem.title}</span>
+        <small>{isOpen ? 'Hide details' : 'View details'}</small>
+      </button>
+      {isOpen && (
+        <>
+          {packageItem.intro.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+          <div className="package-groups">
+            {packageItem.groups.map((group) => (
+              <MenuGroup group={group} key={group.heading} />
+            ))}
+          </div>
+        </>
+      )}
     </article>
   )
 }

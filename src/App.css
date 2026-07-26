@@ -349,6 +349,22 @@
   background: var(--paper);
 }
 
+.quick-info,
+.split-section,
+.statement-section,
+.venues-section,
+.packages-section,
+.options-section,
+.our-menu-section,
+.restaurant-section,
+.proof-section,
+.gallery-section,
+.contact-section,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 56rem;
+}
+
 .info-card {
   min-width: 0;
   padding: 1.5rem;
@@ -605,7 +621,7 @@
   padding: clamp(1.25rem, 3vw, 2.25rem);
 }
 
-.package-card h3,
+.package-toggle span,
 .restaurant-section h2 {
   margin: 0;
   font-family: var(--heading);
@@ -613,6 +629,38 @@
   font-weight: 950;
   line-height: 0.95;
   letter-spacing: 0;
+}
+
+.package-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.package-toggle small {
+  flex: 0 0 auto;
+  border: 1px solid rgb(255 248 232 / 0.35);
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.package-toggle:hover small {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink);
 }
 
 .package-card > p {
@@ -683,21 +731,21 @@
   box-shadow: 8px 8px 0 rgb(31 27 22 / 0.22);
 }
 
-.current-menu-panel summary {
+.current-menu-summary {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr minmax(8rem, 15rem);
   gap: 1rem;
   align-items: center;
+  border: 0;
   padding: 1rem;
+  background: transparent;
+  color: var(--ink);
   cursor: pointer;
-  list-style: none;
+  text-align: left;
 }
 
-.current-menu-panel summary::-webkit-details-marker {
-  display: none;
-}
-
-.current-menu-panel summary span {
+.current-menu-summary span {
   display: grid;
   gap: 0.45rem;
   font-family: var(--heading);
@@ -706,7 +754,7 @@
   line-height: 0.95;
 }
 
-.current-menu-panel summary small {
+.current-menu-summary small {
   color: var(--tomato);
   font-family: var(--sans);
   font-size: 0.7rem;
@@ -715,7 +763,7 @@
   text-transform: uppercase;
 }
 
-.current-menu-panel summary img {
+.current-menu-summary img {
   width: 100%;
   height: 8rem;
   object-fit: cover;
@@ -1050,12 +1098,12 @@
     height: 20rem;
   }
 
-  .current-menu-panel summary,
+  .current-menu-summary,
   .current-menu-item {
     grid-template-columns: 1fr;
   }
 
-  .current-menu-panel summary img {
+  .current-menu-summary img {
     height: 12rem;
   }
 
@@ -1080,6 +1128,11 @@
 
   .button {
     width: 100%;
+  }
+
+  .package-toggle {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .contact-panel {
