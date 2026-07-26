@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import './App.css'
 import { menuPages } from './menu-pages'
 
@@ -899,6 +899,7 @@ function ContactPage() {
             experience you want guests to have. Papazzio will help shape the
             event from there.
           </p>
+          <ContactForm />
         </div>
         <div className="contact-panel">
           <p>
@@ -919,6 +920,75 @@ function ContactPage() {
         </div>
       </section>
     </main>
+  )
+}
+
+function ContactForm() {
+  const [formStatus, setFormStatus] = useState('')
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const formData = new FormData(event.currentTarget)
+    const message = [
+      `Name: ${formData.get('name')}`,
+      `Email: ${formData.get('email')}`,
+      `Phone: ${formData.get('phone') || 'Not provided'}`,
+      `Event type: ${formData.get('eventType') || 'Not provided'}`,
+      `Event date: ${formData.get('eventDate') || 'Not provided'}`,
+      `Guest count: ${formData.get('guestCount') || 'Not provided'}`,
+      `Venue/location: ${formData.get('venue') || 'Not provided'}`,
+      '',
+      'Message:',
+      `${formData.get('message')}`,
+    ].join('\n')
+
+    const subject = encodeURIComponent(`Papazzio Catering inquiry from ${formData.get('name')}`)
+    const body = encodeURIComponent(message)
+
+    window.location.href = `${site.emailHref}?subject=${subject}&body=${body}`
+    setFormStatus('Opening your email app with the event details ready to send.')
+  }
+
+  return (
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="form-grid">
+        <label>
+          Name
+          <input autoComplete="name" name="name" required type="text" />
+        </label>
+        <label>
+          Email
+          <input autoComplete="email" name="email" required type="email" />
+        </label>
+        <label>
+          Phone
+          <input autoComplete="tel" name="phone" type="tel" />
+        </label>
+        <label>
+          Event Type
+          <input name="eventType" placeholder="Wedding, shower, corporate..." type="text" />
+        </label>
+        <label>
+          Event Date
+          <input name="eventDate" type="date" />
+        </label>
+        <label>
+          Guest Count
+          <input min="1" name="guestCount" type="number" />
+        </label>
+      </div>
+      <label>
+        Venue or Location
+        <input name="venue" placeholder="Venue name, backyard, office, TBD..." type="text" />
+      </label>
+      <label>
+        Message
+        <textarea name="message" required rows={5} />
+      </label>
+      <button className="button button-dark" type="submit">Send Inquiry</button>
+      {formStatus ? <p className="form-status">{formStatus}</p> : null}
+    </form>
   )
 }
 
