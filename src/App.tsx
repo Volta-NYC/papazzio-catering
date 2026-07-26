@@ -1,4 +1,17 @@
 import './App.css'
+import { menuPages } from './menu-pages'
+
+type MenuLine = {
+  description?: string
+  isNote?: boolean
+  price?: string
+  title: string
+}
+
+type MenuSection = {
+  lines: MenuLine[]
+  title: string
+}
 
 const site = {
   phone: '718.229.1962',
@@ -28,6 +41,7 @@ const navItems = [
   { label: 'Weddings', href: '#weddings' },
   { label: 'Venues', href: '#venues' },
   { label: 'Packages', href: '#packages' },
+  { label: 'Our Menu', href: '#our-menu' },
   { label: 'Restaurant', href: '#restaurant' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
@@ -246,6 +260,73 @@ const additionalOptions = [
   { heading: 'Additional Options', items: ['Valet', 'Chair Covers', 'Tent Rentals'] },
 ]
 
+const baseSectionHeadings = [
+  'DINNER MENU',
+  'LUNCH MENU',
+  'TRAY MENU',
+  'DESSERT MENU',
+  'Wine Menu',
+  'Happy Hour Menu',
+  '$10 HAPPY HOUR MENU STARTING JULY 1ST',
+  'ANTIPASTI',
+  'INSALATE',
+  'SALADS',
+  'PASTAS',
+  'ENTREES',
+  'SIDES',
+  'Appetizers',
+  'Salads',
+  'Pastas',
+  'Entrees',
+  'Sides',
+  'GF Options',
+  'SUMMER HAPPY HOUR',
+  'ANTIPASTI (Choose One)',
+  'SECONDI (Choose One)',
+  'DOLCI (Choose One)',
+]
+
+const wineSectionHeadings = ['Spumante', 'Bianco', 'Rosso Italiano', 'Rosso Americano']
+
+const dessertItems = [
+  'Chocolate Oreo Mousse Cake',
+  'Homemade Cheesecake',
+  'Tiramisu',
+  'Homemade Cinnamon Apple Tart',
+  'Spumoni Tartufo',
+  'Affogato',
+  'Cannoli',
+  'Brownie',
+  'Gluten Free Brownie GF',
+  'Gluten Free Cannoli GF',
+  'Gluten Free Cheesecake GF',
+  'Gluten Free Tiramisu GF',
+  'Gluten Free Oreo Mousse GF',
+  'Lemon Sorbet GF',
+  'Ice Cream GF',
+  '*Ala Mode',
+]
+
+const introLabels = [
+  'Small trays',
+  'All tray orders',
+  'Wire racks',
+  'A 50% deposit',
+  'Prices may change',
+  'Gluten-Free:',
+  'All bottles',
+  '50% off all Wine',
+  'Weekdays 4-7 PM',
+  'Holidays Excluded',
+  'Bar Area Only',
+  'La Dolce Notte',
+  'Great Food',
+  'Thursdays Only',
+  '20% gratuity',
+  'GF Indicates',
+  'To substitute',
+]
+
 function App() {
   return (
     <div className="site">
@@ -434,6 +515,44 @@ function App() {
           </div>
         </section>
 
+        <section className="our-menu-section" id="our-menu">
+          <div className="section-intro">
+            <p className="eyebrow tomato">Our Menu</p>
+            <h2>The real Papazzio menu, carried over from the Papazzio site.</h2>
+            <p>
+              The legacy catering page named “Our Menu” was a WordPress demo
+              page, but Papazzio&apos;s current site has the actual dinner,
+              lunch, tray, dessert, wine, happy hour, and seasonal menus. Those
+              menus are included here and organized for browsing.
+            </p>
+          </div>
+          <div className="current-menu-list">
+            {menuPages.map((page) => (
+              <details className="current-menu-panel" key={page.slug}>
+                <summary>
+                  <span>
+                    <small>Papazzio menu</small>
+                    {page.title}
+                  </span>
+                  <img src={page.image} alt="" />
+                </summary>
+                <div className="current-menu-body">
+                  {parseMenu(page.content, page.title, page.slug).map((section) => (
+                    <section className="current-menu-section" key={`${page.slug}-${section.title}`}>
+                      <h3>{section.title}</h3>
+                      <div>
+                        {section.lines.map((line, index) => (
+                          <MenuItem line={line} key={`${line.title}-${index}`} />
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
         <section className="restaurant-section" id="restaurant">
           <img src={images.restaurant} alt="Papazzio restaurant dining room" />
           <div>
@@ -606,6 +725,152 @@ function MenuGroup({ group }: { group: { heading: string; items: string[] } }) {
       </ul>
     </div>
   )
+}
+
+function MenuItem({ line }: { line: MenuLine }) {
+  if (line.isNote) {
+    return <p className="current-menu-note">{line.title}</p>
+  }
+
+  return (
+    <article className="current-menu-item">
+      <div>
+        <h4>{line.title}</h4>
+        {line.description ? <p>{line.description}</p> : null}
+      </div>
+      {line.price ? <span>{line.price}</span> : null}
+    </article>
+  )
+}
+
+function parseMenu(content: string, fallbackTitle: string, slug: string): MenuSection[] {
+  const lines = lineBreaks(content, slug)
+  const sections: MenuSection[] = []
+  let current: MenuSection = { title: fallbackTitle, lines: [] }
+
+  for (const line of lines) {
+    if (isNavigationLine(line)) {
+      continue
+    }
+
+    if (isSectionHeading(line)) {
+      if (current.lines.length > 0 || current.title !== fallbackTitle) {
+        sections.push(current)
+      }
+      current = { title: normalizeHeading(line), lines: [] }
+      continue
+    }
+
+    current.lines.push(parseLine(line, slug))
+  }
+
+  if (current.lines.length > 0) {
+    sections.push(current)
+  }
+
+  return sections.filter((section) => section.lines.length > 0)
+}
+
+function lineBreaks(content: string, slug: string) {
+  let text = content
+  const sectionHeadings = slug === 'wine-menu' ? [...baseSectionHeadings, ...wineSectionHeadings] : baseSectionHeadings
+
+  for (const heading of sectionHeadings) {
+    text = text.replaceAll(` ${heading} `, `\n${heading}\n`)
+    if (text.startsWith(`${heading} `)) {
+      text = text.replace(`${heading} `, `${heading}\n`)
+    }
+  }
+
+  text = text
+    .replaceAll(' Lunch Menu ', '\nLunch Menu\n')
+    .replaceAll(' Dinner Menu ', '\nDinner Menu\n')
+    .replaceAll(' Dessert Menu ', '\nDessert Menu\n')
+    .replaceAll(' Tray Menu ', '\nTray Menu\n')
+    .replaceAll(/(?<![/$]) (?=\$?\s?\d{1,3}(?:\.\d{2})?(?:\s?\/\s?\$?\s?\d{1,3}(?:\.\d{2})?)?\s+[A-Z][A-Za-zÀ-ÿ])/g, '\n')
+
+  for (const label of introLabels) {
+    text = text.replaceAll(` ${label}`, `\n${label}`)
+  }
+
+  if (slug === 'dessert-menu') {
+    for (const item of dessertItems) {
+      text = text.replaceAll(` ${item}`, `\n${item}`)
+    }
+  }
+
+  return text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+}
+
+function parseLine(line: string, slug: string): MenuLine {
+  if (slug === 'dessert-menu') {
+    if (line.startsWith('*Ala Mode')) {
+      return {
+        description: 'Vanilla or Chocolate',
+        price: '+$2',
+        title: 'A la Mode',
+      }
+    }
+
+    const dessertItem = dessertItems.find((item) => line === item || line.startsWith(`${item} `))
+
+    if (dessertItem) {
+      return {
+        description: line.slice(dessertItem.length).trim() || undefined,
+        title: dessertItem,
+      }
+    }
+  }
+
+  const priced = line.match(/^(\$?\s?(?:market price|\d{1,3}(?:\.\d{2})?(?:\s?\/\s?\$?\s?\d{1,3}(?:\.\d{2})?)*))\s+(.+)$/i)
+
+  if (!priced) {
+    return { isNote: true, title: line }
+  }
+
+  const price = normalizePrice(priced[1])
+  const body = priced[2].trim()
+  const cleanBody = body.replace(/\s+\$?\s?\d{1,3}(?:\.\d{2})?(?:\s?\/\s?\$?\s?\d{1,3}(?:\.\d{2})?)*\s*$/g, '').trim()
+
+  const glutenFreeIndex = cleanBody.indexOf(' GF ')
+  if (glutenFreeIndex > 0) {
+    return {
+      description: cleanBody.slice(glutenFreeIndex + 4).trim(),
+      price,
+      title: cleanBody.slice(0, glutenFreeIndex + 3).trim(),
+    }
+  }
+
+  const descriptionStart = cleanBody.search(/\s(?:Clams|Fried|Drizzled|New|Grilled|Served|Sautéed|Sauteed|With|On|In|Crisp|Layers|Egg|Chicken|Veal|Shrimp|Penne|Fettuccine|Linguine|Smooth|Creamy|Classic|House|Homemade|Roasted|Choice|Small|Large|Gulf|Jumbo|Tossed|Bow|Angel|Pan|Whole|Potato|Marinated|Broiled|Italian|Crispy|Four|Three|Fresh|Arugula|Cold|Two|Sliced|Jumbo|Breaded|Lightly|Topped)\b/)
+
+  if (descriptionStart > 0) {
+    return {
+      description: cleanBody.slice(descriptionStart).trim(),
+      price,
+      title: cleanBody.slice(0, descriptionStart).trim(),
+    }
+  }
+
+  return { price, title: cleanBody }
+}
+
+function normalizePrice(value: string) {
+  return value.replace(/\s+/g, ' ').replace('$ ', '$').trim()
+}
+
+function normalizeHeading(line: string) {
+  return line.replace(/\s+/g, ' ').trim()
+}
+
+function isNavigationLine(line: string) {
+  return ['Lunch Menu', 'Dinner Menu', 'Dessert Menu', 'Tray Menu'].includes(line)
+}
+
+function isSectionHeading(line: string) {
+  return [...baseSectionHeadings, ...wineSectionHeadings].some((heading) => line === heading)
 }
 
 export default App
